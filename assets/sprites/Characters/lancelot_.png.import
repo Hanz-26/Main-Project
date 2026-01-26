@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://htrlxts7mobq"
-path="res://.godot/imported/knight.png-7c67c83d34932624952797d9e971a644.ctex"
+uid="uid://cdh4k6s2sirxq"
+path="res://.godot/imported/lancelot_.png-f298eee0fcbb691f17cce3c64d7a158e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/knight.png"
-dest_files=["res://.godot/imported/knight.png-7c67c83d34932624952797d9e971a644.ctex"]
+source_file="res://assets/sprites/Characters/lancelot_.png"
+dest_files=["res://.godot/imported/lancelot_.png-f298eee0fcbb691f17cce3c64d7a158e.ctex"]
 
 [params]
 
