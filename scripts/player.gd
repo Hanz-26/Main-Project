@@ -3,10 +3,17 @@ extends CharacterBody2D
 
 const SPEED = 130.0
 const JUMP_VELOCITY = -300.0
+var is_attacking = false
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var sword: Sprite2D = $sword
+@onready var sword_attacks: AnimatedSprite2D = $sword_attacks
+@onready var stab_collision: CollisionShape2D = $sword_attacks/stab_area/stab_collision
+@onready var swing_collision: CollisionShape2D = $sword_attacks/swing_area/swing_collision
+
 
 func _physics_process(delta: float) -> void:
+	move_and_slide()
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -21,8 +28,10 @@ func _physics_process(delta: float) -> void:
 	
 	if direction > 0:
 		animated_sprite.flip_h = false
+		sword.offset = Vector2(0,0)
 	elif direction < 0:
 		animated_sprite.flip_h = true
+		sword.offset = Vector2(28.25,0)
 	
 	if is_on_floor():	
 		if direction == 0:
@@ -37,5 +46,41 @@ func _physics_process(delta: float) -> void:
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+		
+	#Weapon attacks
+	if Input.is_action_just_pressed("stab") or Input.is_action_just_pressed("swing"):
+		if is_attacking: #prevent attack spamming
+			return
+			
+		is_attacking = true
+		if Input.is_action_just_pressed("stab"):
+			sword.visible = false
+			sword_attacks.visible = true
+			stab_collision.disabled = false
+			if animated_sprite.flip_h == true:
+				sword_attacks.flip_v = true
+				sword_attacks.offset = Vector2(0,35)
+				stab_collision.position = Vector2(0,35)
+			sword_attacks.play("stab")
 
-	move_and_slide()
+		if Input.is_action_just_pressed("swing"):
+			sword.visible = false
+			sword_attacks.visible = true
+			swing_collision.disabled = false
+			if animated_sprite.flip_h == true:
+				sword_attacks.flip_v = true
+				sword_attacks.offset = Vector2(0,35)
+				swing_collision.position = Vector2(0,35)
+			sword_attacks.play("swing")
+
+#this function receives a signal when the attack animation is over
+func _on_sword_attacks_animation_finished() -> void:
+	sword.visible = true
+	sword_attacks.visible = false
+	sword_attacks.flip_v = false
+	swing_collision.disabled = true
+	stab_collision.disabled = true
+	sword_attacks.offset = Vector2(0,0) #reset attack animation to right side
+	swing_collision.position = Vector2(0,0) #reset swing collition to right side
+	stab_collision.position = Vector2(0,0) #reset stab collition to right side
+	is_attacking =  false
