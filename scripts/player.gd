@@ -10,11 +10,11 @@ var is_attacking = false
 @onready var sword_attacks: AnimatedSprite2D = $sword_attacks
 @onready var stab_collision: CollisionShape2D = $sword_attacks/stab_area/stab_collision
 @onready var swing_collision: CollisionShape2D = $sword_attacks/swing_area/swing_collision
+@onready var game_manager: Node = %"Game Manager"
 
 
 func _physics_process(delta: float) -> void:
-	move_and_slide()
-	# Add the gravity.
+		# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
@@ -41,7 +41,6 @@ func _physics_process(delta: float) -> void:
 	else:
 		animated_sprite.play("jump")
 	
-	
 	if direction:
 		velocity.x = direction * SPEED
 	else:
@@ -49,7 +48,7 @@ func _physics_process(delta: float) -> void:
 		
 	#Weapon attacks
 	if Input.is_action_just_pressed("stab") or Input.is_action_just_pressed("swing"):
-		if is_attacking: #prevent attack spamming
+		if is_attacking or game_manager.hearts <= 0: #prevent attack spamming or attacking while dead which crashes game
 			return
 			
 		is_attacking = true
@@ -72,6 +71,8 @@ func _physics_process(delta: float) -> void:
 				sword_attacks.offset = Vector2(0,35)
 				swing_collision.position = Vector2(0,35)
 			sword_attacks.play("swing")
+			
+	move_and_slide()
 
 #this function receives a signal when the attack animation is over
 func _on_sword_attacks_animation_finished() -> void:
@@ -84,3 +85,25 @@ func _on_sword_attacks_animation_finished() -> void:
 	swing_collision.position = Vector2(0,0) #reset swing collition to right side
 	stab_collision.position = Vector2(0,0) #reset stab collition to right side
 	is_attacking =  false
+
+
+#NEED TO FINISH KNOCKBACK FUNCTION
+func apply_knockback():
+	pass
+	'''
+	var knockback = Vector2.ZERO
+	var knockback_timer = 0
+	
+	#direction, force, duration
+	knockback = Vector2(10, 10) * 150
+	knockback_timer = 100.12
+	
+	if knockback_timer > 0:
+		velocity = knockback
+		knockback_timer -= .00010
+		if knockback_timer <= 0:
+			knockback = Vector2.ZERO
+	else:
+		pass#_movement(1)
+	move_and_slide()
+'''

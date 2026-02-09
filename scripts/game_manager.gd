@@ -1,10 +1,60 @@
 extends Node
 
 var score = 0
+var hearts = 3
+var lives = Global.lives
 
-@onready var ui: CanvasLayer = $"../UI"
+@onready var player: CharacterBody2D = $"../Player"
+@onready var player_spawn: Marker2D = $"../Spawn_locations/Initial_spawn"
+
+func _ready():
+	hearts = 3
+	lives = Global.lives
+	player.get_node("UI/Health/Hearts").get_child(0).visible = true
+	player.get_node("UI/Health/Hearts").get_child(2).visible = true
+	player.get_node("UI/Health/Hearts").get_child(4).visible = true
+	player.get_node("UI/Health/Hearts").get_child(1).visible = false
+	player.get_node("UI/Health/Hearts").get_child(3).visible = false
+	player.get_node("UI/Health/Hearts").get_child(5).visible = false
+	player.get_node("UI/Health/Lives/Lives_count").text = ("x" + str(lives))
+	player.global_position = player_spawn.global_position
 
 func add_point():
 	score += 1
 	print(score)
-	ui.get_node("Coins").text = "Coins: " + str(score)
+	player.get_node("UI/Coins/Coins_counter").text = "x" + str(score)
+
+func take_damage(): #called by harm_zone.gd & kill_zone.gd
+	player.apply_knockback()#FUNCTION NOT FINISHED
+	hearts -= 1
+	player.get_node("UI/Health/Hearts").get_child(hearts * 2).visible = false
+	player.get_node("UI/Health/Hearts").get_child(hearts * 2 + 1).visible = true
+	
+	if hearts == 0:
+		print("Hit by enemy")
+		print("Hearts left: ", hearts)
+		print("You are dead")
+		player_death()
+	else:
+		print("Hit by enemy")
+		print("Hearts left: ", hearts)
+	
+func player_death():
+	var playground = get_parent().get_node("Layers/Playground")
+	if lives > 0:
+		Engine.time_scale = 0.5
+		Global.lives -= 1
+		playground.collision_enabled = false
+		await get_tree().create_timer(0.5).timeout	
+		Engine.time_scale = 1
+		print("Lives: ", Global.lives)	
+		playground.collision_enabled = true
+		_ready()
+	else:
+		Engine.time_scale = 0.5
+		playground.collision_enabled = false
+		await get_tree().create_timer(0.5).timeout	
+		get_tree().reload_current_scene()
+		print("Game Over")
+		Engine.time_scale = 1
+		Global.lives = 3

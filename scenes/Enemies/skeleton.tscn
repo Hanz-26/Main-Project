@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://ctoi65vmimc3d"]
 
 [ext_resource type="Texture2D" uid="uid://c085udvjgh6f8" path="res://assets/sprites/Enemies/skeleton_.png" id="1_apicw"]
-[ext_resource type="PackedScene" uid="uid://dgjb0g2vlxfry" path="res://scenes/kill_zone.tscn" id="2_8f06n"]
+[ext_resource type="PackedScene" uid="uid://cjxbpfwu0kdky" path="res://scenes/harm_zone.tscn" id="3_8f06n"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bqk5g"]
 atlas = ExtResource("1_apicw")
@@ -52,8 +52,8 @@ animation = &"idle"
 autoplay = "idle"
 frame_progress = 0.9554962
 
-[node name="Kill Zone" parent="AnimatedSprite2D" instance=ExtResource("2_8f06n")]
+[node name="Harm Zone" parent="AnimatedSprite2D" instance=ExtResource("3_8f06n")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Kill Zone"]
-position = Vector2(0.17580414, 3.956974)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Harm Zone"]
+position = Vector2(0.17580462, 3.956974)
 shape = SubResource("RectangleShape2D_ww5mx")

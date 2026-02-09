@@ -1,9 +1,12 @@
-[gd_scene load_steps=39 format=3 uid="uid://diy1rbnx7ofgo"]
+[gd_scene load_steps=42 format=3 uid="uid://diy1rbnx7ofgo"]
 
 [ext_resource type="Texture2D" uid="uid://htrlxts7mobq" path="res://assets/sprites/Characters/knight.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://whx1jb1rcwdx" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://cx5m25sptp6qp" path="res://assets/sprites/Weapons/excalibur_.png" id="2_qhqgy"]
 [ext_resource type="Script" uid="uid://c1a66s0jna27j" path="res://scripts/weapon_hitzone.gd" id="3_dqkch"]
+[ext_resource type="FontFile" uid="uid://cv1pamu56518r" path="res://assets/fonts/PixelOperator8.ttf" id="3_qlg0r"]
+[ext_resource type="Texture2D" uid="uid://r2k7hhn2te2n" path="res://assets/sprites/Hearts/animated/border/heart_animated_1.png" id="5_tuyoq"]
+[ext_resource type="Texture2D" uid="uid://cpwtw6ythinkd" path="res://assets/sprites/coin.png" id="7_fjrip"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4ni07"]
 atlas = ExtResource("2_qhqgy")
@@ -254,7 +257,7 @@ collision_layer = 2
 script = ExtResource("1_g2els")
 
 [node name="sword" type="Sprite2D" parent="."]
-position = Vector2(70.86215, -86.289375)
+position = Vector2(-4.653351, -17.146507)
 scale = Vector2(0.41361547, 0.41361547)
 texture = ExtResource("2_qhqgy")
 flip_v = true
@@ -263,7 +266,7 @@ region_rect = Rect2(8, 0, 16, 32)
 
 [node name="sword_attacks" type="AnimatedSprite2D" parent="."]
 visible = false
-position = Vector2(92.87312, -85.903534)
+position = Vector2(19.707367, -17.073002)
 rotation = 1.5707964
 scale = Vector2(0.96638364, 0.96638364)
 sprite_frames = SubResource("SpriteFrames_wnwbv")
@@ -289,20 +292,151 @@ disabled = true
 debug_color = Color(0.78859824, 0.4224644, 0.23352861, 0.41960785)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(76.66278, -92.08472)
+position = Vector2(1.1472778, -22.941849)
 sprite_frames = SubResource("SpriteFrames_tuyoq")
 animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(76.70245, -87.12822)
+position = Vector2(1.1869507, -17.985352)
 shape = SubResource("RectangleShape2D_qlg0r")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(76.662766, -115.47467)
+position = Vector2(1.1472626, -46.331802)
 zoom = Vector2(4, 4)
-limit_bottom = 90
+limit_bottom = -5
 position_smoothing_speed = 10.0
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Health" type="Node2D" parent="UI"]
+
+[node name="Hearts" type="Node2D" parent="UI/Health"]
+
+[node name="Heart_1_On" type="Sprite2D" parent="UI/Health/Hearts"]
+position = Vector2(26.611366, 31.711494)
+scale = Vector2(2.143102, 2.143102)
+texture = ExtResource("5_tuyoq")
+region_enabled = true
+region_rect = Rect2(0, 0, 17, 17)
+
+[node name="Heart_1_Off" type="Sprite2D" parent="UI/Health/Hearts"]
+visible = false
+position = Vector2(26.611366, 31.711494)
+scale = Vector2(2.143102, 2.143102)
+texture = ExtResource("5_tuyoq")
+region_enabled = true
+region_rect = Rect2(68, 0, 17, 17)
+
+[node name="Heart_2_On" type="Sprite2D" parent="UI/Health/Hearts"]
+position = Vector2(68.41799, 31.711494)
+scale = Vector2(2.143102, 2.143102)
+texture = ExtResource("5_tuyoq")
+region_enabled = true
+region_rect = Rect2(0, 0, 17, 17)
+
+[node name="Heart_2_Off" type="Sprite2D" parent="UI/Health/Hearts"]
+visible = false
+position = Vector2(68.41799, 31.711494)
+scale = Vector2(2.143102, 2.143102)
+texture = ExtResource("5_tuyoq")
+region_enabled = true
+region_rect = Rect2(68, 0, 17, 17)
+
+[node name="Heart_3_On" type="Sprite2D" parent="UI/Health/Hearts"]
+position = Vector2(110.31051, 31.711494)
+scale = Vector2(2.143102, 2.143102)
+texture = ExtResource("5_tuyoq")
+region_enabled = true
+region_rect = Rect2(0, 0, 17, 17)
+
+[node name="Heart_3_Off" type="Sprite2D" parent="UI/Health/Hearts"]
+visible = false
+position = Vector2(110.31051, 31.711494)
+scale = Vector2(2.143102, 2.143102)
+texture = ExtResource("5_tuyoq")
+region_enabled = true
+region_rect = Rect2(68, 0, 17, 17)
+
+[node name="Lives" type="Node2D" parent="UI/Health"]
+position = Vector2(-32.248657, 0)
+
+[node name="Life_sprite" type="Sprite2D" parent="UI/Health/Lives"]
+position = Vector2(208.66705, 31.980629)
+scale = Vector2(2.5072238, 2.5072238)
+texture = ExtResource("1_3vyb7")
+region_enabled = true
+region_rect = Rect2(9, 9, 13, 19)
+
+[node name="Lives_count" type="Label" parent="UI/Health/Lives"]
+offset_left = 229.39328
+offset_top = 27.019817
+offset_right = 271.39328
+offset_bottom = 51.019817
+theme_override_fonts/font = ExtResource("3_qlg0r")
+theme_override_font_sizes/font_size = 24
+text = "x3"
+
+[node name="Coins" type="Node2D" parent="UI"]
+position = Vector2(-5.886284, 0)
+
+[node name="Coins_counter" type="Label" parent="UI/Coins"]
+anchors_preset = -1
+offset_left = 47.375015
+offset_top = 74.78468
+offset_right = 103.375015
+offset_bottom = 106.78468
+theme_override_fonts/font = ExtResource("3_qlg0r")
+theme_override_font_sizes/font_size = 24
+text = "x0"
+metadata/_edit_use_anchors_ = true
+
+[node name="Coin_symbol" type="Sprite2D" parent="UI/Coins"]
+position = Vector2(30.03012, 88.05068)
+scale = Vector2(3.1593156, 3.1593156)
+texture = ExtResource("7_fjrip")
+region_enabled = true
+region_rect = Rect2(3, 3, 10, 10)
+
+[node name="Attacks" type="Node2D" parent="UI"]
+
+[node name="Stab" type="Sprite2D" parent="UI/Attacks"]
+position = Vector2(126.41226, 604.2823)
+rotation = 1.5707964
+scale = Vector2(3, 3)
+texture = ExtResource("2_qhqgy")
+region_enabled = true
+region_rect = Rect2(10, 6, 12, 21)
+
+[node name="Swing" type="Sprite2D" parent="UI/Attacks"]
+position = Vector2(40.178947, 607.703)
+rotation = 1.5707964
+scale = Vector2(3, 3)
+texture = ExtResource("2_qhqgy")
+region_enabled = true
+region_rect = Rect2(0, 36, 20, 24)
+
+[node name="Stab_letter" type="Label" parent="UI/Attacks"]
+offset_left = 121.086044
+offset_top = 550.0187
+offset_right = 128.54143
+offset_bottom = 558.0187
+scale = Vector2(3, 3)
+theme_override_fonts/font = ExtResource("3_qlg0r")
+theme_override_font_sizes/font_size = 8
+text = "E"
+metadata/_edit_use_anchors_ = true
+
+[node name="Swing_letter" type="Label" parent="UI/Attacks"]
+offset_left = 31.044819
+offset_top = 549.8529
+offset_right = 38.5002
+offset_bottom = 557.8529
+scale = Vector2(3, 3)
+theme_override_fonts/font = ExtResource("3_qlg0r")
+theme_override_font_sizes/font_size = 8
+text = "Q"
+metadata/_edit_use_anchors_ = true
 
 [connection signal="animation_finished" from="sword_attacks" to="." method="_on_sword_attacks_animation_finished"]
 [connection signal="area_entered" from="sword_attacks/stab_area" to="sword_attacks/stab_area" method="_on_area_entered"]
