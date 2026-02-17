@@ -17,15 +17,14 @@ func _ready():
 	player.get_node("UI/Health/Hearts").get_child(3).visible = false
 	player.get_node("UI/Health/Hearts").get_child(5).visible = false
 	player.get_node("UI/Health/Lives/Lives_count").text = ("x" + str(lives))
-	player.global_position = player_spawn.global_position
+	player.global_position = player_spawn.global_position# turn this off to freely mover player around
 
 func add_point():
 	score += 1
-	print(score)
+	#print(score)
 	player.get_node("UI/Coins/Coins_counter").text = "x" + str(score)
 
 func take_damage(): #called by harm_zone.gd & kill_zone.gd
-	player.apply_knockback()#FUNCTION NOT FINISHED
 	hearts -= 1
 	player.get_node("UI/Health/Hearts").get_child(hearts * 2).visible = false
 	player.get_node("UI/Health/Hearts").get_child(hearts * 2 + 1).visible = true

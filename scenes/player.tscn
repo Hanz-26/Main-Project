@@ -302,10 +302,27 @@ position = Vector2(1.1869507, -17.985352)
 shape = SubResource("RectangleShape2D_qlg0r")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(1.1472626, -46.331802)
+position = Vector2(1, -46)
 zoom = Vector2(4, 4)
 limit_bottom = -5
 position_smoothing_speed = 10.0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.3
+drag_top_margin = 0.5
+drag_right_margin = 0.3
+drag_bottom_margin = 0.1
+
+[node name="Boss_Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -46.332)
+zoom = Vector2(3, 3)
+limit_bottom = -5
+position_smoothing_speed = 10.0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 1.0
+drag_top_margin = 1.0
+drag_right_margin = 0.7
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -381,7 +398,6 @@ text = "x3"
 position = Vector2(-5.886284, 0)
 
 [node name="Coins_counter" type="Label" parent="UI/Coins"]
-anchors_preset = -1
 offset_left = 47.375015
 offset_top = 74.78468
 offset_right = 103.375015

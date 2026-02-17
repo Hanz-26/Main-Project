@@ -1,0 +1,60 @@
+[gd_scene load_steps=9 format=3 uid="uid://bis0588usypdd"]
+
+[ext_resource type="Texture2D" uid="uid://fc3brnvmy68v" path="res://assets/sprites/Enemies/dragon_.png" id="1_7vfg4"]
+[ext_resource type="PackedScene" uid="uid://cjxbpfwu0kdky" path="res://scenes/harm_zone.tscn" id="2_sshda"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yc5l8"]
+atlas = ExtResource("1_7vfg4")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wfcpe"]
+atlas = ExtResource("1_7vfg4")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_putpi"]
+atlas = ExtResource("1_7vfg4")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i1fo8"]
+atlas = ExtResource("1_7vfg4")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yuri1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yc5l8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wfcpe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_putpi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i1fo8")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ww5mx"]
+size = Vector2(10.144928, 15.556976)
+
+[node name="dragon_boss" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(64.64753, -70.04328)
+scale = Vector2(5.862705, 5.862705)
+sprite_frames = SubResource("SpriteFrames_yuri1")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.88917094
+
+[node name="Harm Zone" parent="AnimatedSprite2D" instance=ExtResource("2_sshda")]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Harm Zone"]
+position = Vector2(0.17580462, 3.956974)
+shape = SubResource("RectangleShape2D_ww5mx")

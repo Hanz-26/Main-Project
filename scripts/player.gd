@@ -52,24 +52,17 @@ func _physics_process(delta: float) -> void:
 			return
 			
 		is_attacking = true
+		sword.visible = false
+		sword_attacks.visible = true
+		stab_collision.disabled = false
+		if animated_sprite.flip_h == true:
+			sword_attacks.flip_v = true
+			sword_attacks.offset = Vector2(0,35)
+			stab_collision.position = Vector2(0,35)
+			
 		if Input.is_action_just_pressed("stab"):
-			sword.visible = false
-			sword_attacks.visible = true
-			stab_collision.disabled = false
-			if animated_sprite.flip_h == true:
-				sword_attacks.flip_v = true
-				sword_attacks.offset = Vector2(0,35)
-				stab_collision.position = Vector2(0,35)
 			sword_attacks.play("stab")
-
 		if Input.is_action_just_pressed("swing"):
-			sword.visible = false
-			sword_attacks.visible = true
-			swing_collision.disabled = false
-			if animated_sprite.flip_h == true:
-				sword_attacks.flip_v = true
-				sword_attacks.offset = Vector2(0,35)
-				swing_collision.position = Vector2(0,35)
 			sword_attacks.play("swing")
 			
 	move_and_slide()
@@ -87,23 +80,19 @@ func _on_sword_attacks_animation_finished() -> void:
 	is_attacking =  false
 
 
-#NEED TO FINISH KNOCKBACK FUNCTION
-func apply_knockback():
-	pass
-	'''
-	var knockback = Vector2.ZERO
-	var knockback_timer = 0
+
+func apply_knockback(hit_position: Vector2):
+	var direction = (global_position - hit_position).normalized()
+	var force = 500
+	var timer = 0.15
+	var knockback_velocity = direction * force
+	knockback_velocity.y = -100
+#	print("Player x,y: ", global_position)
+#	print("Enemy x,y: ", hit_position)
+#	print(direction)
 	
-	#direction, force, duration
-	knockback = Vector2(10, 10) * 150
-	knockback_timer = 100.12
-	
-	if knockback_timer > 0:
-		velocity = knockback
-		knockback_timer -= .00010
-		if knockback_timer <= 0:
-			knockback = Vector2.ZERO
-	else:
-		pass#_movement(1)
-	move_and_slide()
-'''
+	while timer > 0:
+		velocity = knockback_velocity
+		move_and_slide()
+		await get_tree().physics_frame
+		timer -= get_physics_process_delta_time()

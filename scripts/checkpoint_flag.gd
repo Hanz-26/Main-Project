@@ -7,6 +7,7 @@ var is_active = false
 
 func _on_body_entered(body: Node2D) -> void:
 	if (not is_active):
+		print("Checkpoint reached")
 		animated_sprite_2d.play("waving")
 		is_active = true
 		game_manager.player_spawn.global_position = animated_sprite_2d.get_parent().global_position
