@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=4 uid="uid://ljsicx1qqwsk"]
+[gd_scene load_steps=57 format=4 uid="uid://ljsicx1qqwsk"]
 
 [ext_resource type="Script" uid="uid://kruuh8belvkf" path="res://scripts/game_manager.gd" id="1_lucq6"]
 [ext_resource type="Texture2D" uid="uid://cdrm851rw0x8f" path="res://assets/sprites/castle-tileset.png" id="2_raw2d"]
@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://ctoi65vmimc3d" path="res://scenes/Enemies/skeleton.tscn" id="9_mjpyu"]
 [ext_resource type="PackedScene" uid="uid://bis0588usypdd" path="res://scenes/Enemies/Bosses/dragon.tscn" id="11_raw2d"]
 [ext_resource type="PackedScene" uid="uid://d11cuybx78lig" path="res://scenes/Enemies/Bosses/necromancer.tscn" id="12_jxaga"]
-[ext_resource type="PackedScene" uid="uid://bdc5hf7v6c6pj" path="res://scenes/Enemies/floating_skull.tscn" id="13_qxehx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r1x0o"]
 texture = ExtResource("2_raw2d")
@@ -684,82 +683,6 @@ _data = {
 &"RESET": SubResource("Animation_e1j6l")
 }
 
-[sub_resource type="Animation" id="Animation_o4ba3"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-9.734, -39.597)]
-}
-
-[sub_resource type="Animation" id="Animation_3u52x"]
-resource_name = "move"
-length = 6.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 2, 4, 5, 6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(-9.734, -39.597), Vector2(-153.15154, -39.597), Vector2(-153.15154, 52.89534), Vector2(146.5237, 52.89534), Vector2(146.524, -39.597), Vector2(-9.734, -39.597)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_j8v4c"]
-_data = {
-&"RESET": SubResource("Animation_o4ba3"),
-&"move": SubResource("Animation_3u52x")
-}
-
-[sub_resource type="Animation" id="Animation_2uy5p"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-9.734, 52.895)]
-}
-
-[sub_resource type="Animation" id="Animation_j8v4c"]
-resource_name = "move"
-length = 6.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 2, 4, 5, 6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(-9.734, 52.895), Vector2(146.5237, 52.89534), Vector2(146.524, -39.597), Vector2(-153.15154, -39.597), Vector2(-153.15154, 52.89534), Vector2(-9.734, 52.895)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_mjpyu"]
-_data = {
-&"RESET": SubResource("Animation_2uy5p"),
-&"move": SubResource("Animation_j8v4c")
-}
-
 [node name="Castle_level" type="Node2D"]
 
 [node name="Game Manager" type="Node" parent="."]
@@ -792,12 +715,12 @@ position = Vector2(935.3372, -40.680866)
 shape = SubResource("RectangleShape2D_lucq6")
 
 [node name="Player" parent="." instance=ExtResource("4_qxehx")]
-position = Vector2(378.6658, -294.2535)
+position = Vector2(461.19012, -294.2832)
 
 [node name="Spawn_locations" type="Node2D" parent="."]
 
 [node name="Initial_spawn" type="Marker2D" parent="Spawn_locations"]
-position = Vector2(126.990845, -37.985756)
+position = Vector2(344.55292, -294.1407)
 
 [node name="Checkpoints" type="Node2D" parent="Spawn_locations"]
 position = Vector2(170.03424, -556.094)
@@ -809,7 +732,7 @@ position = Vector2(86.96576, 508.094)
 position = Vector2(1589.9658, 508.094)
 
 [node name="Checkpoint_3" parent="Spawn_locations/Checkpoints" instance=ExtResource("5_lucq6")]
-position = Vector2(62.96576, 379.094)
+position = Vector2(202.06976, 251.86472)
 
 [node name="Checkpoint_4" parent="Spawn_locations/Checkpoints" instance=ExtResource("5_lucq6")]
 position = Vector2(63.96576, 124.093994)
@@ -823,13 +746,53 @@ position = Vector2(1022.9658, -132.906)
 position = Vector2(592.5799, -336.57916)
 
 [node name="left_spawn" type="Marker2D" parent="Spawn_locations/enemy_spawns/miniboss_room"]
-position = Vector2(-90.44922, -0.8689575)
+visible = false
+position = Vector2(-81.60425, -0.8689575)
 
 [node name="up_spawn" type="Marker2D" parent="Spawn_locations/enemy_spawns/miniboss_room"]
-position = Vector2(-9.235779, -33.03003)
+visible = false
+position = Vector2(-5.3047485, -33.03003)
 
 [node name="right_spawn" type="Marker2D" parent="Spawn_locations/enemy_spawns/miniboss_room"]
+visible = false
 position = Vector2(70.09149, -0.8689575)
+
+[node name="floating_skulls_spawns" type="Node2D" parent="Spawn_locations/enemy_spawns/miniboss_room"]
+
+[node name="wave_1" type="Node2D" parent="Spawn_locations/enemy_spawns/miniboss_room/floating_skulls_spawns"]
+visible = false
+
+[node name="up_spawn" type="Marker2D" parent="Spawn_locations/enemy_spawns/miniboss_room/floating_skulls_spawns/wave_1"]
+position = Vector2(0, -55.978394)
+
+[node name="down_spawn" type="Marker2D" parent="Spawn_locations/enemy_spawns/miniboss_room/floating_skulls_spawns/wave_1"]
+position = Vector2(0, 36.74652)
+
+[node name="wave_2" type="Node2D" parent="Spawn_locations/enemy_spawns/miniboss_room/floating_skulls_spawns"]
+visible = false
+
+[node name="up_left_spawn" type="Marker2D" parent="Spawn_locations/enemy_spawns/miniboss_room/floating_skulls_spawns/wave_2"]
+position = Vector2(-139.829, -55.978)
+
+[node name="up_right_spawn" type="Marker2D" parent="Spawn_locations/enemy_spawns/miniboss_room/floating_skulls_spawns/wave_2"]
+position = Vector2(152.205, -55.978)
+
+[node name="down_spawn" type="Marker2D" parent="Spawn_locations/enemy_spawns/miniboss_room/floating_skulls_spawns/wave_2"]
+position = Vector2(0, 36.747)
+
+[node name="wave_3" type="Node2D" parent="Spawn_locations/enemy_spawns/miniboss_room/floating_skulls_spawns"]
+
+[node name="up_spawn" type="Marker2D" parent="Spawn_locations/enemy_spawns/miniboss_room/floating_skulls_spawns/wave_3"]
+position = Vector2(8.979492, -56.386784)
+
+[node name="left_spawn" type="Marker2D" parent="Spawn_locations/enemy_spawns/miniboss_room/floating_skulls_spawns/wave_3"]
+position = Vector2(-161.09868, -8.654793)
+
+[node name="down_spawn" type="Marker2D" parent="Spawn_locations/enemy_spawns/miniboss_room/floating_skulls_spawns/wave_3"]
+position = Vector2(8.979794, 36.169697)
+
+[node name="right_spawn" type="Marker2D" parent="Spawn_locations/enemy_spawns/miniboss_room/floating_skulls_spawns/wave_3"]
+position = Vector2(144.34949, -8.655098)
 
 [node name="Coins" type="Node2D" parent="."]
 position = Vector2(170.03424, -556.094)
@@ -995,16 +958,16 @@ collision_layer = 4
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Floor_3/miniboss_room/miniboss_gate/Area2D"]
-position = Vector2(26.5, 8)
+position = Vector2(26.5, 7.770752)
 shape = SubResource("RectangleShape2D_jxaga")
 
 [node name="Platform_l" parent="Platforms/Floor_3/miniboss_room" instance=ExtResource("7_j8v4c")]
 visible = false
-position = Vector2(362.72504, -225.35257)
+position = Vector2(371.0345, -225.35257)
 
 [node name="Platform_u" parent="Platforms/Floor_3/miniboss_room" instance=ExtResource("7_j8v4c")]
 visible = false
-position = Vector2(442.72754, -257.49567)
+position = Vector2(447.47577, -257.49567)
 
 [node name="Platform_r" parent="Platforms/Floor_3/miniboss_room" instance=ExtResource("7_j8v4c")]
 visible = false
@@ -1096,23 +1059,6 @@ position = Vector2(627.36224, -223.44135)
 position = Vector2(453.0832, -239.42856)
 
 [node name="wave_1" type="Node2D" parent="Enemies/Miniboss_enemies"]
-visible = false
-
-[node name="floating_skull_up" parent="Enemies/Miniboss_enemies/wave_1" instance=ExtResource("13_qxehx")]
-position = Vector2(-9.734, -39.597)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Enemies/Miniboss_enemies/wave_1/floating_skull_up"]
-libraries = {
-&"": SubResource("AnimationLibrary_j8v4c")
-}
-
-[node name="floating_skull_down" parent="Enemies/Miniboss_enemies/wave_1" instance=ExtResource("13_qxehx")]
-position = Vector2(-9.734, 52.895)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Enemies/Miniboss_enemies/wave_1/floating_skull_down"]
-libraries = {
-&"": SubResource("AnimationLibrary_mjpyu")
-}
 
 [node name="wave_2" type="Node2D" parent="Enemies/Miniboss_enemies"]
 
@@ -1138,3 +1084,5 @@ position = Vector2(-18.517143, 18.558655)
 [connection signal="body_entered" from="Platforms/Floor_3/miniboss_room/miniboss_gate/Area2D" to="Enemies/Bosses/necromancer_boss" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Platforms/Floor_3/miniboss_room/miniboss_shield/Area2D" to="Enemies/Bosses/necromancer_boss" method="_on_area_2d_body_entered_2"]
 [connection signal="child_exiting_tree" from="Enemies/Miniboss_enemies/wave_1" to="Enemies/Bosses/necromancer_boss" method="_on_wave_1_child_exiting_tree"]
+[connection signal="child_exiting_tree" from="Enemies/Miniboss_enemies/wave_2" to="Enemies/Bosses/necromancer_boss" method="_on_wave_2_child_exiting_tree"]
+[connection signal="child_exiting_tree" from="Enemies/Miniboss_enemies/wave_3" to="Enemies/Bosses/necromancer_boss" method="_on_wave_3_child_exiting_tree"]

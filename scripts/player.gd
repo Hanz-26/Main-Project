@@ -14,7 +14,7 @@ var is_attacking = false
 
 
 func _physics_process(delta: float) -> void:
-		# Add the gravity.
+	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
@@ -79,9 +79,7 @@ func _on_sword_attacks_animation_finished() -> void:
 	stab_collision.position = Vector2(0,0) #reset stab collition to right side
 	is_attacking =  false
 
-
-
-func apply_knockback(hit_position: Vector2):
+func apply_knockback(hit_position: Vector2):# hit_position is the global position of the enemy/hazard that hurt player
 	var direction = (global_position - hit_position).normalized()
 	var force = 500
 	var timer = 0.15
@@ -96,3 +94,4 @@ func apply_knockback(hit_position: Vector2):
 		move_and_slide()
 		await get_tree().physics_frame
 		timer -= get_physics_process_delta_time()
+		
