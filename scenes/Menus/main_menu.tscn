@@ -1,0 +1,490 @@
+[gd_scene load_steps=30 format=3 uid="uid://bby5i6hlyeun1"]
+
+[ext_resource type="Script" uid="uid://b1mq68uld31fc" path="res://scripts/Menus/main_menu.gd" id="1_3b8pq"]
+[ext_resource type="FontFile" uid="uid://5m5skid6fqwx" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="1_8i5ae"]
+[ext_resource type="FontFile" uid="uid://cv1pamu56518r" path="res://assets/fonts/PixelOperator8.ttf" id="2_rvjno"]
+[ext_resource type="Texture2D" uid="uid://htrlxts7mobq" path="res://assets/sprites/Characters/knight.png" id="3_iep04"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iep04"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g2els"]
+atlas = ExtResource("3_iep04")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
+atlas = ExtResource("3_iep04")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dqkch"]
+atlas = ExtResource("3_iep04")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qlg0r"]
+atlas = ExtResource("3_iep04")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tuyoq"]
+atlas = ExtResource("3_iep04")
+region = Rect2(64, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fjrip"]
+atlas = ExtResource("3_iep04")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_smehm"]
+atlas = ExtResource("3_iep04")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ur7pv"]
+atlas = ExtResource("3_iep04")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y4r1p"]
+atlas = ExtResource("3_iep04")
+region = Rect2(96, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2wvv"]
+atlas = ExtResource("3_iep04")
+region = Rect2(128, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3v2ag"]
+atlas = ExtResource("3_iep04")
+region = Rect2(160, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jej6c"]
+atlas = ExtResource("3_iep04")
+region = Rect2(192, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1ej7"]
+atlas = ExtResource("3_iep04")
+region = Rect2(224, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oprun"]
+atlas = ExtResource("3_iep04")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a8ls1"]
+atlas = ExtResource("3_iep04")
+region = Rect2(32, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qfm1y"]
+atlas = ExtResource("3_iep04")
+region = Rect2(64, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fulsm"]
+atlas = ExtResource("3_iep04")
+region = Rect2(96, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4r5pv"]
+atlas = ExtResource("3_iep04")
+region = Rect2(128, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_60mlk"]
+atlas = ExtResource("3_iep04")
+region = Rect2(160, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i4ail"]
+atlas = ExtResource("3_iep04")
+region = Rect2(192, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a38lo"]
+atlas = ExtResource("3_iep04")
+region = Rect2(224, 96, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3b8pq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g2els")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qhqgy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dqkch")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qlg0r")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tuyoq")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fjrip")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_smehm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ur7pv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y4r1p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2wvv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3v2ag")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jej6c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f1ej7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oprun")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a8ls1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qfm1y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fulsm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4r5pv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_60mlk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i4ail")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a38lo")
+}],
+"loop": true,
+"name": &"run",
+"speed": 10.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3b8pq"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xfgxo"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="main_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3b8pq")
+
+[node name="background" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_iep04")
+
+[node name="select_icon" type="AnimatedSprite2D" parent="."]
+position = Vector2(127.90921, 110.0146)
+scale = Vector2(3.0434828, 3.0434828)
+sprite_frames = SubResource("SpriteFrames_3b8pq")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="main_menu_text" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="game_title" type="Label" parent="main_menu_text"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -376.0
+offset_top = -180.99174
+offset_right = 376.0
+offset_bottom = -116.991745
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_8i5ae")
+theme_override_font_sizes/font_size = 64
+text = "LevelBreaker"
+
+[node name="menu_selections" type="VBoxContainer" parent="main_menu_text"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -134.0
+offset_top = -26.0
+offset_right = 134.0
+offset_bottom = 132.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="start_game" type="Label" parent="main_menu_text/menu_selections"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_rvjno")
+theme_override_font_sizes/font_size = 40
+text = "Start Game"
+
+[node name="options" type="Label" parent="main_menu_text/menu_selections"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_rvjno")
+theme_override_font_sizes/font_size = 40
+text = "Options"
+
+[node name="exit_game" type="Label" parent="main_menu_text/menu_selections"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_rvjno")
+theme_override_font_sizes/font_size = 40
+text = "Exit Game"
+
+[node name="emtpy_space" type="Label" parent="main_menu_text/menu_selections"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_rvjno")
+theme_override_font_sizes/font_size = 40
+
+[node name="credits" type="Label" parent="main_menu_text/menu_selections"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_rvjno")
+theme_override_font_sizes/font_size = 40
+text = "Credits"
+
+[node name="bottom_text" type="Label" parent="main_menu_text"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -264.0
+offset_top = 243.0
+offset_right = 175.0
+offset_bottom = 297.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_8i5ae")
+theme_override_font_sizes/font_size = 16
+text = "Miami Dade College
+Software Engineering Capstone
+Spring 2026"
+horizontal_alignment = 1
+
+[node name="submenus" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="submenu_options" type="Control" parent="submenus"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="options_title" type="Label" parent="submenus/submenu_options"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 16.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_8i5ae")
+theme_override_font_sizes/font_size = 64
+text = "Options"
+horizontal_alignment = 1
+
+[node name="options_selections" type="VBoxContainer" parent="submenus/submenu_options"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 172.7273
+offset_top = -220.3967
+offset_bottom = 199.18
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="options_volume" type="Label" parent="submenus/submenu_options/options_selections"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Volume"
+
+[node name="PanelContainer" type="PanelContainer" parent="submenus/submenu_options/options_selections/options_volume"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -746.23584
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3b8pq")
+
+[node name="Panel" type="Panel" parent="submenus/submenu_options/options_selections/options_volume/PanelContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xfgxo")
+
+[node name="Panel2" type="Panel" parent="submenus/submenu_options/options_selections/options_volume/PanelContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xfgxo")
+
+[node name="Panel3" type="Panel" parent="submenus/submenu_options/options_selections/options_volume/PanelContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xfgxo")
+
+[node name="options_back" type="Label" parent="submenus/submenu_options"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -469.2
+offset_top = -66.39996
+offset_right = -239.20001
+offset_bottom = -26.399963
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 40
+text = "Back"
+
+[node name="submenu_credits" type="Control" parent="submenus"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="team_credits" type="Control" parent="submenus/submenu_credits"]
+anchors_preset = 0
+offset_right = 1149.0908
+offset_bottom = 184.54544
+
+[node name="credits_title" type="Label" parent="submenus/submenu_credits/team_credits"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 64.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_8i5ae")
+theme_override_font_sizes/font_size = 64
+text = "Credits"
+horizontal_alignment = 1
+
+[node name="team_names" type="GridContainer" parent="submenus/submenu_credits/team_credits"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -412.63635
+offset_top = 89.99997
+offset_right = -14.636353
+offset_bottom = 144.90907
+grow_horizontal = 2
+scale = Vector2(2, 2)
+theme_override_constants/h_separation = 50
+theme_override_constants/v_separation = 10
+columns = 2
+
+[node name="team_hansel" type="Label" parent="submenus/submenu_credits/team_credits/team_names"]
+layout_mode = 2
+text = "Hansel Ramirez"
+
+[node name="team_carlos" type="Label" parent="submenus/submenu_credits/team_credits/team_names"]
+layout_mode = 2
+text = "Carlos Diaz"
+
+[node name="team_dionny" type="Label" parent="submenus/submenu_credits/team_credits/team_names"]
+layout_mode = 2
+text = "Dionny Dinza"
+
+[node name="team_manuel" type="Label" parent="submenus/submenu_credits/team_credits/team_names"]
+layout_mode = 2
+text = "Manuel Miras"
+
+[node name="asset_credits" type="Control" parent="submenus/submenu_credits"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -401.81815
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="asset_credits_title" type="Label" parent="submenus/submenu_credits/asset_credits"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -211.82869
+offset_bottom = -163.82869
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_8i5ae")
+theme_override_font_sizes/font_size = 48
+text = "Asset Credits"
+horizontal_alignment = 1
+
+[node name="asset_credits_names" type="GridContainer" parent="submenus/submenu_credits/asset_credits"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -392.63632
+offset_top = -125.63635
+offset_right = 5.3636475
+offset_bottom = -70.727295
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+theme_override_constants/h_separation = 50
+theme_override_constants/v_separation = 10
+columns = 2
+
+[node name="asset_credits_name_1" type="Label" parent="submenus/submenu_credits/asset_credits/asset_credits_names"]
+layout_mode = 2
+text = "ankousse26"
+
+[node name="asset_credits_name_2" type="Label" parent="submenus/submenu_credits/asset_credits/asset_credits_names"]
+layout_mode = 2
+text = "BDragon1727"
