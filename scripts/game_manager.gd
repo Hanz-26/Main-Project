@@ -27,7 +27,7 @@ func add_point():
 	#print(score)
 	player.get_node("UI/Coins/Coins_counter").text = "x" + str(score)
 
-func take_damage(): #called by harm_zone.gd & kill_zone.gd
+func take_damage(): #called by harm_zone.gd
 	hearts -= 1
 	player.get_node("UI/Health/Hearts").get_child(hearts * 2).visible = false
 	player.get_node("UI/Health/Hearts").get_child(hearts * 2 + 1).visible = true

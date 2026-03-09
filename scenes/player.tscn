@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://c1a66s0jna27j" path="res://scripts/weapon_hitzone.gd" id="3_dqkch"]
 [ext_resource type="FontFile" uid="uid://cv1pamu56518r" path="res://assets/fonts/PixelOperator8.ttf" id="3_qlg0r"]
 [ext_resource type="Texture2D" uid="uid://r2k7hhn2te2n" path="res://assets/sprites/Hearts/animated/border/heart_animated_1.png" id="5_tuyoq"]
-[ext_resource type="Texture2D" uid="uid://cpwtw6ythinkd" path="res://assets/sprites/coin.png" id="7_fjrip"]
+[ext_resource type="Texture2D" uid="uid://cpwtw6ythinkd" path="res://assets/sprites/Items/coin.png" id="7_fjrip"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4ni07"]
 atlas = ExtResource("2_qhqgy")

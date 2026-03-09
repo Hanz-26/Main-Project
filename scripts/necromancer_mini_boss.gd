@@ -204,7 +204,7 @@ func spawn_wave_3():
 		float_skull.global_position = miniboss_room_spawns.get_node("floating_skulls_spawns/wave_3").get_child(i).global_position
 		if i > 1:# These are the bottom spawn points
 			float_skull.direction = Vector2(1, 0)# Makes it go right
-			float_skull.get_node("AnimatedSprite2D/ray_casts/RayCast2D_right").enabled = true# This should not be necessary ¯\_(ツ)_/¯
+			float_skull.get_node("AnimatedSprite2D/ray_casts/RayCast2D_right").enabled = true# This should not be necessary ¯\_(ツ)_/¯. I think I need to recall _ready() instead
 	
 	#Code below makes it so only one of the skulls has a number x mod {div} = {rem}
 	@warning_ignore("integer_division")

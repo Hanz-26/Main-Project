@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Music="*res://scenes/music.tscn"
 Global="*res://scripts/Global.gd"
+Global_World_Environment="*res://scenes/Globals/world_environment.tscn"
 
 [display]
 

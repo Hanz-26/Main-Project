@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cj5t8bwfs4qiq"]
+
+[sub_resource type="Environment" id="Environment_pifpk"]
+background_mode = 3
+adjustment_enabled = true
+
+[node name="World_Environment" type="WorldEnvironment"]
+environment = SubResource("Environment_pifpk")

@@ -1,9 +1,10 @@
-[gd_scene load_steps=30 format=3 uid="uid://bby5i6hlyeun1"]
+[gd_scene load_steps=31 format=3 uid="uid://bby5i6hlyeun1"]
 
 [ext_resource type="Script" uid="uid://b1mq68uld31fc" path="res://scripts/Menus/main_menu.gd" id="1_3b8pq"]
 [ext_resource type="FontFile" uid="uid://5m5skid6fqwx" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="1_8i5ae"]
 [ext_resource type="FontFile" uid="uid://cv1pamu56518r" path="res://assets/fonts/PixelOperator8.ttf" id="2_rvjno"]
 [ext_resource type="Texture2D" uid="uid://htrlxts7mobq" path="res://assets/sprites/Characters/knight.png" id="3_iep04"]
+[ext_resource type="Texture2D" uid="uid://cpwtw6ythinkd" path="res://assets/sprites/Items/coin.png" id="5_xfgxo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iep04"]
 bg_color = Color(0, 0, 0, 1)
@@ -174,10 +175,20 @@ animations = [{
 }]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3b8pq"]
-bg_color = Color(0, 0, 0, 1)
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.99185234, 0.9885455, 0.98701257, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xfgxo"]
-bg_color = Color(1, 1, 1, 1)
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
 
 [node name="main_menu" type="Control"]
 layout_mode = 3
@@ -198,7 +209,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_iep04")
 
 [node name="select_icon" type="AnimatedSprite2D" parent="."]
-position = Vector2(127.90921, 110.0146)
+position = Vector2(574.2728, 410.01465)
 scale = Vector2(3.0434828, 3.0434828)
 sprite_frames = SubResource("SpriteFrames_3b8pq")
 animation = &"idle"
@@ -305,6 +316,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="submenu_options" type="Control" parent="submenus"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -334,37 +346,125 @@ offset_top = -220.3967
 offset_bottom = 199.18
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 50
 
 [node name="options_volume" type="Label" parent="submenus/submenu_options/options_selections"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Volume"
 
-[node name="PanelContainer" type="PanelContainer" parent="submenus/submenu_options/options_selections/options_volume"]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -746.23584
-offset_top = -20.0
-offset_bottom = 20.0
-grow_horizontal = 0
-grow_vertical = 2
+[node name="volume_bar" type="HBoxContainer" parent="submenus/submenu_options/options_selections/options_volume"]
+layout_mode = 0
+offset_left = 352.874
+offset_right = 960.0
+offset_bottom = 40.0
+theme_override_constants/separation = 20
+
+[node name="volume_square_0" type="ColorRect" parent="submenus/submenu_options/options_selections/options_volume/volume_bar"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="volume_square_1" type="ColorRect" parent="submenus/submenu_options/options_selections/options_volume/volume_bar"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="volume_square_2" type="ColorRect" parent="submenus/submenu_options/options_selections/options_volume/volume_bar"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="volume_square_3" type="ColorRect" parent="submenus/submenu_options/options_selections/options_volume/volume_bar"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="volume_square_4" type="ColorRect" parent="submenus/submenu_options/options_selections/options_volume/volume_bar"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="volume_square_5" type="ColorRect" parent="submenus/submenu_options/options_selections/options_volume/volume_bar"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="volume_square_6" type="ColorRect" parent="submenus/submenu_options/options_selections/options_volume/volume_bar"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="volume_square_7" type="ColorRect" parent="submenus/submenu_options/options_selections/options_volume/volume_bar"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="volume_square_8" type="ColorRect" parent="submenus/submenu_options/options_selections/options_volume/volume_bar"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="volume_square_9" type="ColorRect" parent="submenus/submenu_options/options_selections/options_volume/volume_bar"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="volume_bar_border" type="Panel" parent="submenus/submenu_options/options_selections/options_volume"]
+layout_mode = 0
+offset_left = 352.874
+offset_right = 932.874
+offset_bottom = 40.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_3b8pq")
 
-[node name="Panel" type="Panel" parent="submenus/submenu_options/options_selections/options_volume/PanelContainer"]
+[node name="options_brightness" type="Label" parent="submenus/submenu_options/options_selections"]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_xfgxo")
+theme_override_font_sizes/font_size = 40
+text = "Brightness"
 
-[node name="Panel2" type="Panel" parent="submenus/submenu_options/options_selections/options_volume/PanelContainer"]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_xfgxo")
+[node name="brightness_bar" type="HBoxContainer" parent="submenus/submenu_options/options_selections/options_brightness"]
+layout_mode = 0
+offset_left = 352.87396
+offset_right = 959.99994
+offset_bottom = 40.0
+theme_override_constants/separation = 20
 
-[node name="Panel3" type="Panel" parent="submenus/submenu_options/options_selections/options_volume/PanelContainer"]
+[node name="brightness_square_0" type="ColorRect" parent="submenus/submenu_options/options_selections/options_brightness/brightness_bar"]
+custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_xfgxo")
+
+[node name="brightness_square_1" type="ColorRect" parent="submenus/submenu_options/options_selections/options_brightness/brightness_bar"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="brightness_square_2" type="ColorRect" parent="submenus/submenu_options/options_selections/options_brightness/brightness_bar"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="brightness_square_3" type="ColorRect" parent="submenus/submenu_options/options_selections/options_brightness/brightness_bar"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="brightness_square_4" type="ColorRect" parent="submenus/submenu_options/options_selections/options_brightness/brightness_bar"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="brightness_square_5" type="ColorRect" parent="submenus/submenu_options/options_selections/options_brightness/brightness_bar"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="brightness_square_6" type="ColorRect" parent="submenus/submenu_options/options_selections/options_brightness/brightness_bar"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="brightness_square_7" type="ColorRect" parent="submenus/submenu_options/options_selections/options_brightness/brightness_bar"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="brightness_square_8" type="ColorRect" parent="submenus/submenu_options/options_selections/options_brightness/brightness_bar"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="brightness_square_9" type="ColorRect" parent="submenus/submenu_options/options_selections/options_brightness/brightness_bar"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="brightness_bar_border" type="Panel" parent="submenus/submenu_options/options_selections/options_brightness"]
+layout_mode = 0
+offset_left = 352.874
+offset_right = 932.874
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_3b8pq")
 
 [node name="options_back" type="Label" parent="submenus/submenu_options"]
 layout_mode = 1
@@ -488,3 +588,221 @@ text = "ankousse26"
 [node name="asset_credits_name_2" type="Label" parent="submenus/submenu_credits/asset_credits/asset_credits_names"]
 layout_mode = 2
 text = "BDragon1727"
+
+[node name="submenu_start" type="Control" parent="submenus"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="start_title" type="Label" parent="submenus/submenu_start"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 16.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 40
+text = "Select Save File"
+horizontal_alignment = 1
+
+[node name="save_files" type="HBoxContainer" parent="submenus/submenu_start"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -261.0
+offset_bottom = 146.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 400
+
+[node name="save_file_1" type="Control" parent="submenus/submenu_start/save_files" groups=["submenu_start_options"]]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="submenus/submenu_start/save_files/save_file_1"]
+layout_mode = 0
+offset_left = 13.107422
+offset_top = 12.93222
+offset_right = 288.10742
+offset_bottom = 312.93222
+theme_override_styles/panel = SubResource("StyleBoxFlat_xfgxo")
+
+[node name="new_game" type="Label" parent="submenus/submenu_start/save_files/save_file_1/Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "New
+
+Game"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="save_file_info" type="Control" parent="submenus/submenu_start/save_files/save_file_1/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="lives_count" type="Control" parent="submenus/submenu_start/save_files/save_file_1/Panel/save_file_info"]
+layout_mode = 1
+anchors_preset = 0
+offset_right = 118.156586
+offset_bottom = 63.1326
+
+[node name="Life_sprite" type="Sprite2D" parent="submenus/submenu_start/save_files/save_file_1/Panel/save_file_info/lives_count"]
+position = Vector2(34.809113, 31.980629)
+scale = Vector2(2.5072238, 2.5072238)
+texture = ExtResource("3_iep04")
+region_enabled = true
+region_rect = Rect2(9, 9, 13, 19)
+
+[node name="lives_label" type="Label" parent="submenus/submenu_start/save_files/save_file_1/Panel/save_file_info/lives_count"]
+layout_mode = 0
+offset_left = 55.53534
+offset_top = 27.019817
+offset_right = 97.53534
+offset_bottom = 51.019817
+theme_override_fonts/font = ExtResource("2_rvjno")
+theme_override_font_sizes/font_size = 24
+text = "x3"
+
+[node name="coins_ount" type="Control" parent="submenus/submenu_start/save_files/save_file_1/Panel/save_file_info"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -123.97131
+offset_bottom = 59.1268
+grow_horizontal = 0
+
+[node name="coin_sprite" type="Sprite2D" parent="submenus/submenu_start/save_files/save_file_1/Panel/save_file_info/coins_ount"]
+position = Vector2(18.833954, 39.06742)
+scale = Vector2(3.1593156, 3.1593156)
+texture = ExtResource("5_xfgxo")
+region_enabled = true
+region_rect = Rect2(3, 3, 10, 10)
+
+[node name="coins_counter" type="Label" parent="submenus/submenu_start/save_files/save_file_1/Panel/save_file_info/coins_ount"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.09031256
+anchor_top = -0.8284443
+anchor_right = -0.09031256
+anchor_bottom = -0.8284443
+offset_left = 47.375168
+offset_top = 76.003265
+offset_right = 103.37517
+offset_bottom = 108.003265
+theme_override_fonts/font = ExtResource("2_rvjno")
+theme_override_font_sizes/font_size = 24
+text = "x0"
+metadata/_edit_use_anchors_ = true
+
+[node name="level_info" type="Control" parent="submenus/submenu_start/save_files/save_file_1/Panel/save_file_info"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -56.348602
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="level_name" type="Label" parent="submenus/submenu_start/save_files/save_file_1/Panel/save_file_info/level_info"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 59.464478
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 24
+text = "Level 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="save_file_2" type="Control" parent="submenus/submenu_start/save_files" groups=["submenu_start_options"]]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="submenus/submenu_start/save_files/save_file_2"]
+layout_mode = 0
+offset_left = 36.248
+offset_top = 12.932
+offset_right = 311.248
+offset_bottom = 312.932
+theme_override_styles/panel = SubResource("StyleBoxFlat_xfgxo")
+
+[node name="new_game" type="Label" parent="submenus/submenu_start/save_files/save_file_2/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "New
+
+Game"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="save_file_3" type="Control" parent="submenus/submenu_start/save_files" groups=["submenu_start_options"]]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="submenus/submenu_start/save_files/save_file_3"]
+layout_mode = 0
+offset_left = 63.0
+offset_top = 12.932
+offset_right = 338.0
+offset_bottom = 312.932
+theme_override_styles/panel = SubResource("StyleBoxFlat_xfgxo")
+
+[node name="new_game" type="Label" parent="submenus/submenu_start/save_files/save_file_3/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "New
+
+Game"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="save_file_copy" type="Label" parent="submenus/submenu_start" groups=["submenu_start_options"]]
+layout_mode = 0
+offset_left = 424.562
+offset_top = 465.67694
+offset_right = 704.562
+offset_bottom = 505.67697
+theme_override_font_sizes/font_size = 40
+text = "Copy File"
+
+[node name="save_file_delete" type="Label" parent="submenus/submenu_start" groups=["submenu_start_options"]]
+layout_mode = 0
+offset_left = 424.562
+offset_top = 526.2224
+offset_right = 759.562
+offset_bottom = 566.2224
+theme_override_font_sizes/font_size = 40
+text = "Delete File"
+
+[node name="submenu_start_back" type="Label" parent="submenus/submenu_start" groups=["submenu_start_options"]]
+layout_mode = 0
+offset_left = 106.8
+offset_top = 573.6
+offset_right = 307.8
+offset_bottom = 613.6
+theme_override_font_sizes/font_size = 40
+text = "Back"
