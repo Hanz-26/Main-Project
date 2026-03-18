@@ -9,87 +9,87 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iep04"]
 bg_color = Color(0, 0, 0, 1)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_g2els"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_wnwbv"]
 atlas = ExtResource("3_iep04")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_gl8cc"]
 atlas = ExtResource("3_iep04")
 region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dqkch"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_487ah"]
 atlas = ExtResource("3_iep04")
 region = Rect2(64, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qlg0r"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_md1ol"]
 atlas = ExtResource("3_iep04")
 region = Rect2(96, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tuyoq"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_bj30b"]
 atlas = ExtResource("3_iep04")
 region = Rect2(64, 160, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fjrip"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_jc3p3"]
 atlas = ExtResource("3_iep04")
 region = Rect2(0, 64, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_smehm"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_hax0n"]
 atlas = ExtResource("3_iep04")
 region = Rect2(32, 64, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ur7pv"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4otl"]
 atlas = ExtResource("3_iep04")
 region = Rect2(64, 64, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_y4r1p"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_j2b1d"]
 atlas = ExtResource("3_iep04")
 region = Rect2(96, 64, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_d2wvv"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_cs1tg"]
 atlas = ExtResource("3_iep04")
 region = Rect2(128, 64, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3v2ag"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_2dvfe"]
 atlas = ExtResource("3_iep04")
 region = Rect2(160, 64, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jej6c"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_giy8y"]
 atlas = ExtResource("3_iep04")
 region = Rect2(192, 64, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_f1ej7"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_fdfoy"]
 atlas = ExtResource("3_iep04")
 region = Rect2(224, 64, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_oprun"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_hhpqf"]
 atlas = ExtResource("3_iep04")
 region = Rect2(0, 96, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_a8ls1"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_g5jhy"]
 atlas = ExtResource("3_iep04")
 region = Rect2(32, 96, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qfm1y"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_holxr"]
 atlas = ExtResource("3_iep04")
 region = Rect2(64, 96, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fulsm"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_mx1m4"]
 atlas = ExtResource("3_iep04")
 region = Rect2(96, 96, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4r5pv"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_4gjji"]
 atlas = ExtResource("3_iep04")
 region = Rect2(128, 96, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_60mlk"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_u2ulf"]
 atlas = ExtResource("3_iep04")
 region = Rect2(160, 96, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_i4ail"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_6e8lb"]
 atlas = ExtResource("3_iep04")
 region = Rect2(192, 96, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_a38lo"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_2gdjj"]
 atlas = ExtResource("3_iep04")
 region = Rect2(224, 96, 32, 32)
 
@@ -97,16 +97,16 @@ region = Rect2(224, 96, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_g2els")
+"texture": SubResource("AtlasTexture_wnwbv")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qhqgy")
+"texture": SubResource("AtlasTexture_gl8cc")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dqkch")
+"texture": SubResource("AtlasTexture_487ah")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qlg0r")
+"texture": SubResource("AtlasTexture_md1ol")
 }],
 "loop": true,
 "name": &"idle",
@@ -114,7 +114,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tuyoq")
+"texture": SubResource("AtlasTexture_bj30b")
 }],
 "loop": true,
 "name": &"jump",
@@ -122,52 +122,52 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fjrip")
+"texture": SubResource("AtlasTexture_jc3p3")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_smehm")
+"texture": SubResource("AtlasTexture_hax0n")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ur7pv")
+"texture": SubResource("AtlasTexture_t4otl")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_y4r1p")
+"texture": SubResource("AtlasTexture_j2b1d")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_d2wvv")
+"texture": SubResource("AtlasTexture_cs1tg")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3v2ag")
+"texture": SubResource("AtlasTexture_2dvfe")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jej6c")
+"texture": SubResource("AtlasTexture_giy8y")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_f1ej7")
+"texture": SubResource("AtlasTexture_fdfoy")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_oprun")
+"texture": SubResource("AtlasTexture_hhpqf")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_a8ls1")
+"texture": SubResource("AtlasTexture_g5jhy")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qfm1y")
+"texture": SubResource("AtlasTexture_holxr")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fulsm")
+"texture": SubResource("AtlasTexture_mx1m4")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4r5pv")
+"texture": SubResource("AtlasTexture_4gjji")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_60mlk")
+"texture": SubResource("AtlasTexture_u2ulf")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_i4ail")
+"texture": SubResource("AtlasTexture_6e8lb")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_a38lo")
+"texture": SubResource("AtlasTexture_2gdjj")
 }],
 "loop": true,
 "name": &"run",
@@ -209,14 +209,13 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_iep04")
 
 [node name="select_icon" type="AnimatedSprite2D" parent="."]
-position = Vector2(574.2728, 410.01465)
+position = Vector2(364.27283, 467.28735)
 scale = Vector2(3.0434828, 3.0434828)
 sprite_frames = SubResource("SpriteFrames_3b8pq")
 animation = &"idle"
 autoplay = "idle"
 
 [node name="main_menu_text" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -590,6 +589,7 @@ layout_mode = 2
 text = "BDragon1727"
 
 [node name="submenu_start" type="Control" parent="submenus"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -597,32 +597,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="start_title" type="Label" parent="submenus/submenu_start"]
+[node name="save_files" type="HBoxContainer" parent="submenus/submenu_start"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 16.0
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 40
-text = "Select Save File"
-horizontal_alignment = 1
-
-[node name="save_files" type="HBoxContainer" parent="submenus/submenu_start"]
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -261.0
-offset_bottom = 146.0
-grow_horizontal = 2
-grow_vertical = 2
 theme_override_constants/separation = 400
 
-[node name="save_file_1" type="Control" parent="submenus/submenu_start/save_files" groups=["submenu_start_options"]]
+[node name="save_file_0" type="Control" parent="submenus/submenu_start/save_files" groups=["submenu_start_options"]]
 layout_mode = 2
 
-[node name="Panel" type="Panel" parent="submenus/submenu_start/save_files/save_file_1"]
+[node name="Panel" type="Panel" parent="submenus/submenu_start/save_files/save_file_0"]
 layout_mode = 0
 offset_left = 13.107422
 offset_top = 12.93222
@@ -630,13 +615,121 @@ offset_right = 288.10742
 offset_bottom = 312.93222
 theme_override_styles/panel = SubResource("StyleBoxFlat_xfgxo")
 
-[node name="new_game" type="Label" parent="submenus/submenu_start/save_files/save_file_1/Panel"]
+[node name="new_game" type="Label" parent="submenus/submenu_start/save_files/save_file_0/Panel"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "New
+
+Game"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="save_file_info" type="Control" parent="submenus/submenu_start/save_files/save_file_0/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="lives_count" type="Control" parent="submenus/submenu_start/save_files/save_file_0/Panel/save_file_info"]
+layout_mode = 1
+anchors_preset = 0
+offset_right = 118.156586
+offset_bottom = 63.1326
+
+[node name="Life_sprite" type="Sprite2D" parent="submenus/submenu_start/save_files/save_file_0/Panel/save_file_info/lives_count"]
+position = Vector2(34.809113, 31.980629)
+scale = Vector2(2.5072238, 2.5072238)
+texture = ExtResource("3_iep04")
+region_enabled = true
+region_rect = Rect2(9, 9, 13, 19)
+
+[node name="lives_label" type="Label" parent="submenus/submenu_start/save_files/save_file_0/Panel/save_file_info/lives_count"]
+layout_mode = 0
+offset_left = 55.53534
+offset_top = 27.019817
+offset_right = 97.53534
+offset_bottom = 51.019817
+theme_override_fonts/font = ExtResource("2_rvjno")
+theme_override_font_sizes/font_size = 24
+text = "x3"
+
+[node name="coins_count" type="Control" parent="submenus/submenu_start/save_files/save_file_0/Panel/save_file_info"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -123.97131
+offset_bottom = 59.1268
+grow_horizontal = 0
+
+[node name="coin_sprite" type="Sprite2D" parent="submenus/submenu_start/save_files/save_file_0/Panel/save_file_info/coins_count"]
+position = Vector2(18.833954, 39.06742)
+scale = Vector2(3.1593156, 3.1593156)
+texture = ExtResource("5_xfgxo")
+region_enabled = true
+region_rect = Rect2(3, 3, 10, 10)
+
+[node name="coins_counter" type="Label" parent="submenus/submenu_start/save_files/save_file_0/Panel/save_file_info/coins_count"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.09031256
+anchor_top = -0.8284443
+anchor_right = -0.09031256
+anchor_bottom = -0.8284443
+offset_left = 47.375168
+offset_top = 76.003265
+offset_right = 103.37517
+offset_bottom = 108.003265
+theme_override_fonts/font = ExtResource("2_rvjno")
+theme_override_font_sizes/font_size = 24
+text = "x0"
+metadata/_edit_use_anchors_ = true
+
+[node name="level_info" type="Control" parent="submenus/submenu_start/save_files/save_file_0/Panel/save_file_info"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -56.348602
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="level_name" type="Label" parent="submenus/submenu_start/save_files/save_file_0/Panel/save_file_info/level_info"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 59.464478
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 24
+text = "Level 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="save_file_1" type="Control" parent="submenus/submenu_start/save_files" groups=["submenu_start_options"]]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="submenus/submenu_start/save_files/save_file_1"]
+layout_mode = 0
+offset_left = 36.248
+offset_top = 12.932
+offset_right = 311.248
+offset_bottom = 312.932
+theme_override_styles/panel = SubResource("StyleBoxFlat_xfgxo")
+
+[node name="new_game" type="Label" parent="submenus/submenu_start/save_files/save_file_1/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 40
@@ -647,6 +740,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="save_file_info" type="Control" parent="submenus/submenu_start/save_files/save_file_1/Panel"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -677,7 +771,7 @@ theme_override_fonts/font = ExtResource("2_rvjno")
 theme_override_font_sizes/font_size = 24
 text = "x3"
 
-[node name="coins_ount" type="Control" parent="submenus/submenu_start/save_files/save_file_1/Panel/save_file_info"]
+[node name="coins_count" type="Control" parent="submenus/submenu_start/save_files/save_file_1/Panel/save_file_info"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -686,14 +780,14 @@ offset_left = -123.97131
 offset_bottom = 59.1268
 grow_horizontal = 0
 
-[node name="coin_sprite" type="Sprite2D" parent="submenus/submenu_start/save_files/save_file_1/Panel/save_file_info/coins_ount"]
+[node name="coin_sprite" type="Sprite2D" parent="submenus/submenu_start/save_files/save_file_1/Panel/save_file_info/coins_count"]
 position = Vector2(18.833954, 39.06742)
 scale = Vector2(3.1593156, 3.1593156)
 texture = ExtResource("5_xfgxo")
 region_enabled = true
 region_rect = Rect2(3, 3, 10, 10)
 
-[node name="coins_counter" type="Label" parent="submenus/submenu_start/save_files/save_file_1/Panel/save_file_info/coins_ount"]
+[node name="coins_counter" type="Label" parent="submenus/submenu_start/save_files/save_file_1/Panel/save_file_info/coins_count"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.09031256
@@ -735,9 +829,9 @@ layout_mode = 2
 
 [node name="Panel" type="Panel" parent="submenus/submenu_start/save_files/save_file_2"]
 layout_mode = 0
-offset_left = 36.248
+offset_left = 63.0
 offset_top = 12.932
-offset_right = 311.248
+offset_right = 338.0
 offset_bottom = 312.932
 theme_override_styles/panel = SubResource("StyleBoxFlat_xfgxo")
 
@@ -755,48 +849,127 @@ Game"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="save_file_3" type="Control" parent="submenus/submenu_start/save_files" groups=["submenu_start_options"]]
-layout_mode = 2
-
-[node name="Panel" type="Panel" parent="submenus/submenu_start/save_files/save_file_3"]
-layout_mode = 0
-offset_left = 63.0
-offset_top = 12.932
-offset_right = 338.0
-offset_bottom = 312.932
-theme_override_styles/panel = SubResource("StyleBoxFlat_xfgxo")
-
-[node name="new_game" type="Label" parent="submenus/submenu_start/save_files/save_file_3/Panel"]
+[node name="save_file_info" type="Control" parent="submenus/submenu_start/save_files/save_file_2/Panel"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 40
-text = "New
 
-Game"
+[node name="lives_count" type="Control" parent="submenus/submenu_start/save_files/save_file_2/Panel/save_file_info"]
+layout_mode = 1
+anchors_preset = 0
+offset_right = 118.156586
+offset_bottom = 63.1326
+
+[node name="Life_sprite" type="Sprite2D" parent="submenus/submenu_start/save_files/save_file_2/Panel/save_file_info/lives_count"]
+position = Vector2(34.809113, 31.980629)
+scale = Vector2(2.5072238, 2.5072238)
+texture = ExtResource("3_iep04")
+region_enabled = true
+region_rect = Rect2(9, 9, 13, 19)
+
+[node name="lives_label" type="Label" parent="submenus/submenu_start/save_files/save_file_2/Panel/save_file_info/lives_count"]
+layout_mode = 0
+offset_left = 55.53534
+offset_top = 27.019817
+offset_right = 97.53534
+offset_bottom = 51.019817
+theme_override_fonts/font = ExtResource("2_rvjno")
+theme_override_font_sizes/font_size = 24
+text = "x3"
+
+[node name="coins_count" type="Control" parent="submenus/submenu_start/save_files/save_file_2/Panel/save_file_info"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -123.97131
+offset_bottom = 59.1268
+grow_horizontal = 0
+
+[node name="coin_sprite" type="Sprite2D" parent="submenus/submenu_start/save_files/save_file_2/Panel/save_file_info/coins_count"]
+position = Vector2(18.833954, 39.06742)
+scale = Vector2(3.1593156, 3.1593156)
+texture = ExtResource("5_xfgxo")
+region_enabled = true
+region_rect = Rect2(3, 3, 10, 10)
+
+[node name="coins_counter" type="Label" parent="submenus/submenu_start/save_files/save_file_2/Panel/save_file_info/coins_count"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.09031256
+anchor_top = -0.8284443
+anchor_right = -0.09031256
+anchor_bottom = -0.8284443
+offset_left = 47.375168
+offset_top = 76.003265
+offset_right = 103.37517
+offset_bottom = 108.003265
+theme_override_fonts/font = ExtResource("2_rvjno")
+theme_override_font_sizes/font_size = 24
+text = "x0"
+metadata/_edit_use_anchors_ = true
+
+[node name="level_info" type="Control" parent="submenus/submenu_start/save_files/save_file_2/Panel/save_file_info"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -56.348602
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="level_name" type="Label" parent="submenus/submenu_start/save_files/save_file_2/Panel/save_file_info/level_info"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 59.464478
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 24
+text = "Level 1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="save_file_copy" type="Label" parent="submenus/submenu_start" groups=["submenu_start_options"]]
-layout_mode = 0
-offset_left = 424.562
-offset_top = 465.67694
-offset_right = 704.562
-offset_bottom = 505.67697
+[node name="file_selection_options" type="VBoxContainer" parent="submenus/submenu_start"]
+visible = false
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = 38.363647
+offset_bottom = 234.36365
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="save_file_start" type="Label" parent="submenus/submenu_start/file_selection_options"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Start Game"
+horizontal_alignment = 1
+
+[node name="save_file_copy" type="Label" parent="submenus/submenu_start/file_selection_options"]
+layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Copy File"
+horizontal_alignment = 1
 
-[node name="save_file_delete" type="Label" parent="submenus/submenu_start" groups=["submenu_start_options"]]
-layout_mode = 0
-offset_left = 424.562
-offset_top = 526.2224
-offset_right = 759.562
-offset_bottom = 566.2224
+[node name="save_file_delete" type="Label" parent="submenus/submenu_start/file_selection_options"]
+layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Delete File"
+horizontal_alignment = 1
+
+[node name="save_file_cancel" type="Label" parent="submenus/submenu_start/file_selection_options"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Cancel"
+horizontal_alignment = 1
 
 [node name="submenu_start_back" type="Label" parent="submenus/submenu_start" groups=["submenu_start_options"]]
 layout_mode = 0
@@ -806,3 +979,100 @@ offset_right = 307.8
 offset_bottom = 613.6
 theme_override_font_sizes/font_size = 40
 text = "Back"
+
+[node name="save_file_delete_box" type="Control" parent="submenus/submenu_start"]
+visible = false
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="delete_confirmation" type="Label" parent="submenus/submenu_start/save_file_delete_box"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = 40.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "Are you sure want to delete file 1"
+horizontal_alignment = 1
+
+[node name="delete_options" type="HBoxContainer" parent="submenus/submenu_start/save_file_delete_box"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = 120.90912
+offset_bottom = 160.90912
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="delete_yes" type="Label" parent="submenus/submenu_start/save_file_delete_box/delete_options"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Yes"
+
+[node name="delete_no" type="Label" parent="submenus/submenu_start/save_file_delete_box/delete_options"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "No"
+
+[node name="save_file_copy_box" type="Control" parent="submenus/submenu_start"]
+visible = false
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = 36.363647
+offset_bottom = 36.363647
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="copy_prompt" type="Label" parent="submenus/submenu_start/save_file_copy_box"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = 40.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "Select file to overwrite"
+horizontal_alignment = 1
+
+[node name="copy_confirmation" type="HBoxContainer" parent="submenus/submenu_start/save_file_copy_box"]
+visible = false
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = 120.90912
+offset_bottom = 160.90912
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="copy_yes" type="Label" parent="submenus/submenu_start/save_file_copy_box/copy_confirmation"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Yes"
+
+[node name="copy_no" type="Label" parent="submenus/submenu_start/save_file_copy_box/copy_confirmation"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "No"

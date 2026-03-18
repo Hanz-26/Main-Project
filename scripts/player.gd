@@ -75,8 +75,8 @@ func _on_sword_attacks_animation_finished() -> void:
 	swing_collision.disabled = true
 	stab_collision.disabled = true
 	sword_attacks.offset = Vector2(0,0) #reset attack animation to right side
-	swing_collision.position = Vector2(0,0) #reset swing collition to right side
-	stab_collision.position = Vector2(0,0) #reset stab collition to right side
+	swing_collision.position = Vector2(0,0) #reset swing collision to right side
+	stab_collision.position = Vector2(0,0) #reset stab collision to right side
 	is_attacking =  false
 
 func apply_knockback(hit_position: Vector2):# hit_position is the global position of the enemy/hazard that hurt player

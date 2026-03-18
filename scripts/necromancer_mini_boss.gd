@@ -44,12 +44,13 @@ func reset_boss():
 
 # This runs when the miniboss is killed
 func _exit_tree():
-	print("miniboss killed")
-	miniboss_room_label.visible = false
-	player.get_node("Camera2D").enabled = true
-	player.get_node("Boss_Camera2D").enabled = false
-	miniboss_room_platforms.get_node("miniboss_gate").visible = false
-	miniboss_room_platforms.get_node("miniboss_gate/AnimationPlayer").play("RESET")
+	if miniboss_lives == 0:# miniboss gets killed when changing scenes to main menu
+		print("miniboss killed")
+		miniboss_room_label.visible = false
+		player.get_node("Camera2D").enabled = true
+		player.get_node("Boss_Camera2D").enabled = false
+		miniboss_room_platforms.get_node("miniboss_gate").visible = false
+		miniboss_room_platforms.get_node("miniboss_gate/AnimationPlayer").play("RESET")
 	
 # code to run when necromancer miniboss is vulnerable
 func necromancer_vulnerable():
@@ -135,11 +136,11 @@ func spawn_wave_1():
 func _on_wave_1_child_exiting_tree(node: Node) -> void:
 	if is_fight_on:
 		var enemy_num = int(node.get_node("AnimatedSprite2D/Label").text)
-		var wave_1_enemies = miniboss_enemies.get_node("wave_1")
+		#var wave_1_enemies = miniboss_enemies.get_node("wave_1")
 		print("floating skull killed: ", enemy_num)
 		if enemy_num % 2 == 0:
 			necromancer_vulnerable()
-		elif miniboss_lives == 3:
+		elif miniboss_lives == 3 and game_manager.lives > 0:
 			game_manager.take_damage()
 			player.apply_knockback(node.global_position)
 
@@ -177,11 +178,11 @@ func spawn_wave_2():
 func _on_wave_2_child_exiting_tree(node: Node) -> void:
 	if is_fight_on:
 		var enemy_num = int(node.get_node("AnimatedSprite2D/Label").text)
-		var wave_2_enemies = miniboss_enemies.get_node("wave_2")
+		#var wave_2_enemies = miniboss_enemies.get_node("wave_2")
 		print("floating skull killed: ", enemy_num)
 		if enemy_num % 5 == 3:
 			necromancer_vulnerable()
-		elif miniboss_lives == 2:
+		elif miniboss_lives == 2 and game_manager.lives > 0:
 			game_manager.take_damage()
 			player.apply_knockback(node.global_position)
 
@@ -220,10 +221,10 @@ func spawn_wave_3():
 func _on_wave_3_child_exiting_tree(node: Node) -> void:
 	if is_fight_on:
 		var enemy_num = int(node.get_node("AnimatedSprite2D/Label").text)
-		var wave_3_enemies = miniboss_enemies.get_node("wave_3")
+		#var wave_3_enemies = miniboss_enemies.get_node("wave_3")
 		print("floating skull killed: ", enemy_num)
 		if enemy_num % wave_3_div == wave_3_rem:
 			necromancer_vulnerable()
-		elif miniboss_lives == 1:
+		elif miniboss_lives == 1 and game_manager.lives > 0:
 			game_manager.take_damage()
 			player.apply_knockback(node.global_position)
