@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://51vv1834cadg"]
+
+[ext_resource type="Texture2D" uid="uid://4xujvfuvnqak" path="res://assets/sprites/Effects/Fire Effect and Bullet 16x16.png" id="1_gsvpj"]
+[ext_resource type="PackedScene" uid="uid://cjxbpfwu0kdky" path="res://scenes/harm_zone.tscn" id="2_y0bmc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r2f6b"]
+atlas = ExtResource("1_gsvpj")
+region = Rect2(160, 17, 16, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p4a0u"]
+atlas = ExtResource("1_gsvpj")
+region = Rect2(176, 17, 16, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbqme"]
+atlas = ExtResource("1_gsvpj")
+region = Rect2(192, 17, 16, 17)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_31r2q"]
+animations = [{
+"frames": [{
+"duration": 15.0,
+"texture": SubResource("AtlasTexture_r2f6b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p4a0u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tbqme")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3t73f"]
+radius = 6.7080016
+
+[node name="dragon_fireball" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2.6875, 2.6875)
+sprite_frames = SubResource("SpriteFrames_31r2q")
+autoplay = "default"
+frame = 2
+frame_progress = 1.0
+
+[node name="Harm Zone" parent="AnimatedSprite2D" instance=ExtResource("2_y0bmc")]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Harm Zone"]
+position = Vector2(1.4883726, -1.4883723)
+shape = SubResource("CircleShape2D_3t73f")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="AnimatedSprite2D/Harm Zone" method="_on_fireball_animation_finished"]

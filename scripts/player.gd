@@ -50,21 +50,20 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("stab") or Input.is_action_just_pressed("swing"):
 		if is_attacking or game_manager.hearts <= 0: #prevent attack spamming or attacking while dead which crashes game
 			return
-			
 		is_attacking = true
 		sword.visible = false
 		sword_attacks.visible = true
-		stab_collision.disabled = false
 		if animated_sprite.flip_h == true:
 			sword_attacks.flip_v = true
 			sword_attacks.offset = Vector2(0,35)
 			stab_collision.position = Vector2(0,35)
-			
+			swing_collision.position = Vector2(0,35)
 		if Input.is_action_just_pressed("stab"):
+			stab_collision.disabled = false
 			sword_attacks.play("stab")
 		if Input.is_action_just_pressed("swing"):
+			swing_collision.disabled = false
 			sword_attacks.play("swing")
-			
 	move_and_slide()
 
 #this function receives a signal when the attack animation is over

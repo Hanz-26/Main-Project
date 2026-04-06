@@ -21,7 +21,7 @@ func _ready() -> void:
 		n.visible = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-# All movement within menus is handled within this function
+# All movement within menus and user input is handled within this function
 func _process(delta: float) -> void:
 	var direction := Input.get_axis("move_up", "move_down")
 	var h_direction := Input.get_axis("move_left", "move_right")
@@ -290,5 +290,5 @@ func save_file_start(save_index):#starts the game from the selected save
 	Global.active_save_file_index = int(save_index)# This keeps track in global of which save file is currently active
 	var save_file_level = Global.save_files_slots[int(save_index)].get_value("Player", "level")
 	match save_file_level:
-		1: get_tree().change_scene_to_file("res://scenes/castle_level.tscn")
+		1: get_tree().change_scene_to_file("res://scenes/Cutscenes/initial_cutscene.tscn")
 		2: print("launch level 2")

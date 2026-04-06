@@ -1,8 +1,9 @@
-[gd_scene load_steps=31 format=3 uid="uid://bby5i6hlyeun1"]
+[gd_scene load_steps=32 format=3 uid="uid://bby5i6hlyeun1"]
 
 [ext_resource type="Script" uid="uid://b1mq68uld31fc" path="res://scripts/Menus/main_menu.gd" id="1_3b8pq"]
 [ext_resource type="FontFile" uid="uid://5m5skid6fqwx" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="1_8i5ae"]
 [ext_resource type="FontFile" uid="uid://cv1pamu56518r" path="res://assets/fonts/PixelOperator8.ttf" id="2_rvjno"]
+[ext_resource type="Texture2D" uid="uid://dud3uij6vgifx" path="res://assets/sprites/Environments/LevelBreaker Title.png" id="3_5htt8"]
 [ext_resource type="Texture2D" uid="uid://htrlxts7mobq" path="res://assets/sprites/Characters/knight.png" id="3_iep04"]
 [ext_resource type="Texture2D" uid="uid://cpwtw6ythinkd" path="res://assets/sprites/Items/coin.png" id="5_xfgxo"]
 
@@ -229,19 +230,11 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="game_title" type="Label" parent="main_menu_text"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -376.0
-offset_top = -180.99174
-offset_right = 376.0
-offset_bottom = -116.991745
-grow_horizontal = 2
-theme_override_fonts/font = ExtResource("1_8i5ae")
-theme_override_font_sizes/font_size = 64
-text = "LevelBreaker"
+[node name="game_title" type="Sprite2D" parent="main_menu_text"]
+position = Vector2(24.102173, -180.29504)
+scale = Vector2(0.92094857, 0.92094857)
+texture = ExtResource("3_5htt8")
+region_rect = Rect2(0, 0, 1013, 207)
 
 [node name="menu_selections" type="VBoxContainer" parent="main_menu_text"]
 layout_mode = 1
@@ -587,6 +580,11 @@ text = "ankousse26"
 [node name="asset_credits_name_2" type="Label" parent="submenus/submenu_credits/asset_credits/asset_credits_names"]
 layout_mode = 2
 text = "BDragon1727"
+
+[node name="asset_credits_name_3" type="Label" parent="submenus/submenu_credits/asset_credits/asset_credits_names"]
+layout_mode = 2
+text = "Farlight
+Games Ind"
 
 [node name="submenu_start" type="Control" parent="submenus"]
 visible = false

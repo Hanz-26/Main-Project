@@ -1,0 +1,82 @@
+[gd_scene load_steps=6 format=3 uid="uid://dqkoj7qrkwakd"]
+
+[ext_resource type="Texture2D" uid="uid://dhut8dmcxw4dh" path="res://assets/sprites/Environments/castle balcony.png" id="1_s027j"]
+[ext_resource type="Script" uid="uid://ckhwy7461x43n" path="res://scripts/Cutscenes/initial_cutscene.gd" id="1_uiy6m"]
+[ext_resource type="Texture2D" uid="uid://htrlxts7mobq" path="res://assets/sprites/Characters/knight.png" id="2_gigpw"]
+[ext_resource type="Texture2D" uid="uid://clticj5m6pk5y" path="res://assets/sprites/Characters/ladyOfTheLake_.png" id="3_uiy6m"]
+[ext_resource type="Texture2D" uid="uid://ce73a66o6bkr6" path="res://assets/sprites/Enemies/necromancer_.png" id="4_6vmqk"]
+
+[node name="cutscene_manager" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uiy6m")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="background" type="TextureRect" parent="CanvasLayer"]
+z_index = -1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_s027j")
+expand_mode = 2
+
+[node name="black" type="ColorRect" parent="CanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="characters" type="Node2D" parent="."]
+position = Vector2(287.2153, -123.60162)
+
+[node name="prince" type="Sprite2D" parent="characters"]
+z_index = 1
+position = Vector2(190.17567, 610.1069)
+scale = Vector2(5, 5)
+texture = ExtResource("2_gigpw")
+region_enabled = true
+region_rect = Rect2(8, 8, 16, 24)
+
+[node name="princess" type="Sprite2D" parent="characters"]
+position = Vector2(353.247, 610.107)
+scale = Vector2(5, 5)
+texture = ExtResource("3_uiy6m")
+region_enabled = true
+region_rect = Rect2(168, 8, 16, 24)
+
+[node name="wizard" type="Sprite2D" parent="characters"]
+visible = false
+position = Vector2(585.4431, 424.32135)
+scale = Vector2(5, 5)
+texture = ExtResource("4_6vmqk")
+region_enabled = true
+region_rect = Rect2(96, 0, 24, 24)
+
+[node name="narration_text" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -242.5
+offset_bottom = 215.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "Once upon a time,
+
+There was a prince who fell in love with a princess..."
+horizontal_alignment = 1
+autowrap_mode = 3

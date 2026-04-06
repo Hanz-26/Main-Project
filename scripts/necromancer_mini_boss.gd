@@ -140,7 +140,7 @@ func _on_wave_1_child_exiting_tree(node: Node) -> void:
 		print("floating skull killed: ", enemy_num)
 		if enemy_num % 2 == 0:
 			necromancer_vulnerable()
-		elif miniboss_lives == 3 and game_manager.lives > 0:
+		elif miniboss_lives == 3 and game_manager.lives >= 0:
 			game_manager.take_damage()
 			player.apply_knockback(node.global_position)
 
@@ -182,7 +182,7 @@ func _on_wave_2_child_exiting_tree(node: Node) -> void:
 		print("floating skull killed: ", enemy_num)
 		if enemy_num % 5 == 3:
 			necromancer_vulnerable()
-		elif miniboss_lives == 2 and game_manager.lives > 0:
+		elif miniboss_lives == 2 and game_manager.lives >= 0:
 			game_manager.take_damage()
 			player.apply_knockback(node.global_position)
 
@@ -225,6 +225,6 @@ func _on_wave_3_child_exiting_tree(node: Node) -> void:
 		print("floating skull killed: ", enemy_num)
 		if enemy_num % wave_3_div == wave_3_rem:
 			necromancer_vulnerable()
-		elif miniboss_lives == 1 and game_manager.lives > 0:
+		elif miniboss_lives == 1 and game_manager.lives >= 0:
 			game_manager.take_damage()
 			player.apply_knockback(node.global_position)
