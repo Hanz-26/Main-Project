@@ -5,6 +5,7 @@ var hearts = 3
 #var lives = Global.save_files_slots[Global.active_save_file_index].get_value("Player", "lives")
 var score = 0# Use this line and below to launch scene directly
 var lives = 10
+var can_be_hurt = true# This variable is for temporary invulnerability after getting hit
 
 @onready var player: CharacterBody2D = $"../Player"
 @onready var pause_menu = player.get_node("UI/pause_menu")
@@ -99,18 +100,21 @@ func add_point():
 	player.get_node("UI/Coins/Coins_counter").text = "x" + str(score)
 
 func take_damage(): #called by harm_zone.gd
-	hearts -= 1
-	player.get_node("UI/Health/Hearts").get_child(hearts * 2).visible = false
-	player.get_node("UI/Health/Hearts").get_child(hearts * 2 + 1).visible = true
-	
+	if can_be_hurt:
+		#print("❤️ -1")
+		### Comment these three lines out for invincibility
+		hearts -= 1
+		player.get_node("UI/Health/Hearts").get_child(hearts * 2).visible = false
+		player.get_node("UI/Health/Hearts").get_child(hearts * 2 + 1).visible = true
+		###
 	if hearts == 0:
-		#print("Hit by enemy")
-		#print("Hearts left: ", hearts)
-		#print("You are dead")
 		player_death()
-	#else:
-	#	print("Hit by enemy")
-	#	print("Hearts left: ", hearts)
+	else:
+		can_be_hurt = false
+		player.get_node("AnimatedSprite2D").self_modulate = Color("red")
+		await get_tree().create_timer(1).timeout	
+		player.get_node("AnimatedSprite2D").self_modulate = Color(1, 1, 1, 1)
+		can_be_hurt = true
 
 func player_death():
 	Engine.time_scale = 0.5
@@ -124,6 +128,8 @@ func player_death():
 	Engine.time_scale = 1
 	if bosses.get_node("necromancer_boss"):#resets miniboss fight if still present
 		bosses.get_node("necromancer_boss").reset_boss()
+	if bosses.get_node("dragon_final_boss"):#resets dragon boss fight if still present
+		bosses.get_node("dragon_final_boss").reset_boss()
 
 func game_over():# shows game over screen
 	get_tree().paused = true

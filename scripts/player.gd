@@ -4,6 +4,7 @@ extends CharacterBody2D
 const SPEED = 130.0
 const JUMP_VELOCITY = -300.0
 var is_attacking = false
+var can_be_pushed = true
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var sword: Sprite2D = $sword
@@ -78,19 +79,23 @@ func _on_sword_attacks_animation_finished() -> void:
 	stab_collision.position = Vector2(0,0) #reset stab collision to right side
 	is_attacking =  false
 
-func apply_knockback(hit_position: Vector2):# hit_position is the global position of the enemy/hazard that hurt player
-	var direction = (global_position - hit_position).normalized()
-	var force = 500
-	var timer = 0.15
-	var knockback_velocity = direction * force
-	knockback_velocity.y = -100
-#	print("Player x,y: ", global_position)
-#	print("Enemy x,y: ", hit_position)
-#	print(direction)
-	
-	while timer > 0:
-		velocity = knockback_velocity
-		move_and_slide()
-		await get_tree().physics_frame
-		timer -= get_physics_process_delta_time()
+func apply_knockback(hit_position: Vector2, force = 500):# hit_position is the global position of the enemy/hazard that hurt player; default force is 500, in some cases it's more
+	if can_be_pushed:
+		var direction = (global_position - hit_position).normalized()
+		var timer = 0.15
+		var knockback_velocity = direction * force
+		knockback_velocity.y = -100
+	#	print("Player x,y: ", global_position)
+	#	print("Enemy x,y: ", hit_position)
+	#	print(direction)
 		
+		while timer > 0:
+			velocity = knockback_velocity
+			move_and_slide()
+			await get_tree().physics_frame
+			timer -= get_physics_process_delta_time()
+		can_be_pushed = false#FIXME this can be abused to hide inside enemy while still invincible
+		is_attacking = true# This is finnicky, doesn't work if attack is playing while getting hit
+		await get_tree().create_timer(1).timeout	
+		can_be_pushed = true
+		is_attacking = false
