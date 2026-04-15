@@ -1,10 +1,12 @@
 extends Node
 
 var hearts = 3
-#var score = Global.save_files_slots[Global.active_save_file_index].get_value("Player", "coins")
-#var lives = Global.save_files_slots[Global.active_save_file_index].get_value("Player", "lives")
-var score = 0# Use this line and below to launch scene directly
-var lives = 10
+var score = Global.save_files_slots[Global.active_save_file_index].get_value("Player", "coins")
+var lives = Global.save_files_slots[Global.active_save_file_index].get_value("Player", "lives")
+### Use below two lines to launch scene directly
+#var score = 0
+#var lives = 5
+###
 var can_be_hurt = true# This variable is for temporary invulnerability after getting hit
 
 @onready var player: CharacterBody2D = $"../Player"
@@ -12,7 +14,7 @@ var can_be_hurt = true# This variable is for temporary invulnerability after get
 @onready var player_spawn: Marker2D = $"../Spawn_locations/Initial_spawn"# Original initial_spawn location (x,y) = (126.991, -37.986)
 @onready var bosses: Node2D = $"../Enemies/Bosses"
 
-#These two variables are for handling pause menu
+#These variables are for handling pause menu
 var selected_menu
 var selected_menu_index = 0
 var movement_is_blocked = false
@@ -92,33 +94,37 @@ func _process(delta: float) -> void:
 				selected_menu_index = 0
 				selected_menu = pause_menu.get_node("pause_selections").get_child(selected_menu_index)
 				pause_menu.get_node("select_icon").global_position = selected_menu.global_position + Vector2(-25,0)
-	
 
 func add_point():
 	score += 1
 	#print(score)
+	if score == 10:# reset coins to 0; increment lives
+		lives += 1
+		score = 0
+		player.get_node("UI/Health/Lives/Lives_count").text = ("x" + str(lives))
 	player.get_node("UI/Coins/Coins_counter").text = "x" + str(score)
 
+'''
 func take_damage(): #called by harm_zone.gd
 	if can_be_hurt:
-		#print("❤️ -1")
+		print("❤️ -1")
 		### Comment these three lines out for invincibility
-		hearts -= 1
-		player.get_node("UI/Health/Hearts").get_child(hearts * 2).visible = false
-		player.get_node("UI/Health/Hearts").get_child(hearts * 2 + 1).visible = true
+		#hearts -= 1
+		#player.get_node("UI/Health/Hearts").get_child(hearts * 2).visible = false
+		#player.get_node("UI/Health/Hearts").get_child(hearts * 2 + 1).visible = true
 		###
 	if hearts == 0:
 		player_death()
 	else:
 		can_be_hurt = false
 		player.get_node("AnimatedSprite2D").self_modulate = Color("red")
-		await get_tree().create_timer(1).timeout	
+		await get_tree().create_timer(0.5).timeout	
 		player.get_node("AnimatedSprite2D").self_modulate = Color(1, 1, 1, 1)
-		can_be_hurt = true
+		can_be_hurt = true'''
 
 func player_death():
 	Engine.time_scale = 0.5
-	await get_tree().create_timer(0.5).timeout	
+	await get_tree().create_timer(0.1).timeout	
 	if lives > 0:
 		lives -= 1
 		#print("Lives: ", lives)	

@@ -34,8 +34,10 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		player.get_node("Camera2D").enabled = false
 		player.get_node("Boss_Camera2D").enabled = true
 		player.get_node("Boss_Camera2D").offset.x = -100
+		player.get_node("Boss_Camera2D").offset.y = -100# this is to compensate for the miniboss camera shift
 		player.get_node("Boss_Camera2D").drag_right_margin = 0.25
 		player.get_node("Boss_Camera2D").drag_left_margin = 1
+		player.get_node("Boss_Camera2D").drag_bottom_margin = -0.5# this is to compensate for the miniboss camera shift
 		self.get_node("Timer").start(1)# Starts fire breath attack
 		start_finalboss_wave(wave_index)
 
@@ -70,7 +72,7 @@ func start_finalboss_wave(i):
 
 #This function handles spawning enemies for phase 1 waves
 func spawn_phase_1_enemies():
-	print("Phase 1")
+	#print("Phase 1")
 	var phase_1_enemies = finalboss_enemies.get_node("phase_1")
 	for n in finalboss_room_platforms.get_node("ghost_boundaries/interior").get_children():
 		n.set_deferred("disabled", false)
@@ -217,20 +219,20 @@ func _on_phase_1_child_exiting_tree(node: Node) -> void:
 				if num % 2 == 1:
 					dragon_vulnerable()
 				elif final_boss_lives == 7 and game_manager.lives >= 0:
-					game_manager.take_damage()
+					player.take_damage()
 					player.apply_knockback(node.global_position)
 			6:# wave 2: square number
 				if sqrt(num) == round(sqrt(num)):
 					dragon_vulnerable()
 				elif final_boss_lives == 6 and game_manager.lives >= 0:
-					game_manager.take_damage()
+					player.take_damage()
 					player.apply_knockback(node.global_position)
 			5:# wave 3: prime number
 				var prime_numbers = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97]
 				if num in prime_numbers:
 					dragon_vulnerable()
 				else:
-					game_manager.take_damage()
+					player.take_damage()
 					player.apply_knockback(node.global_position)
 
 func _on_phase_2_child_exiting_tree(node: Node) -> void:
@@ -241,19 +243,19 @@ func _on_phase_2_child_exiting_tree(node: Node) -> void:
 				if num.length() == 2 and num[0] == num[1]:
 					dragon_vulnerable()
 				else:
-					game_manager.take_damage()
+					player.take_damage()
 					player.apply_knockback(node.global_position)
 			3:# wave 2: absolute number
 				if int(num) >= 0:
 					dragon_vulnerable()
 				else:
-					game_manager.take_damage()
+					player.take_damage()
 					player.apply_knockback(node.global_position)
 			2:# wave 3: pi
 				if num == "π":
 					dragon_vulnerable()
 				elif !num.is_valid_int():# i don't know why but the ghosts from the previous wave get killed here 
-					game_manager.take_damage()
+					player.take_damage()
 					player.apply_knockback(node.global_position)
 
 func _on_phase_3_child_exiting_tree(node: Node) -> void:
@@ -261,7 +263,7 @@ func _on_phase_3_child_exiting_tree(node: Node) -> void:
 	if num == "0":
 		dragon_vulnerable()
 	elif !num.is_valid_int():
-		game_manager.take_damage()
+		player.take_damage()
 		player.apply_knockback(node.global_position)
 
 func reset_boss():
@@ -286,6 +288,13 @@ func reset_boss():
 			self.get_node("AnimatedSprite2D").play("idle")
 			self.get_node("AnimatedSprite2D/Harm Zone/CollisionShape2D").position -= Vector2(4, 3)# moves it back
 			self.get_node("AnimatedSprite2D/Harm Zone/CollisionShape2D").rotation_degrees = 0# rotates it back
+		### This piece is to reset the boss camera
+		player.get_node("Boss_Camera2D").offset.x = 0
+		player.get_node("Boss_Camera2D").offset.y = 0# this is to compensate for the miniboss camera shift
+		player.get_node("Boss_Camera2D").drag_right_margin = 0.7
+		player.get_node("Boss_Camera2D").drag_left_margin = 0.7
+		player.get_node("Boss_Camera2D").drag_bottom_margin = 0.2# this is to compensate for the miniboss camera shift
+		###
 
 #This code runs when the correct ghost is killed
 func dragon_vulnerable():
@@ -296,9 +305,16 @@ func dragon_vulnerable():
 		for n in self.get_node("fire_breath").get_children():
 			n.queue_free()
 	self.get_node("AnimatedSprite2D/Harm Zone").collision_layer = 1# makes boss vulnerable
-	self.get_node("AnimatedSprite2D").play("vulnerable")
+	#self.get_node("AnimatedSprite2D").play("vulnerable")
+	match final_boss_lives:#play animation depending on phase
+		7, 6, 5:
+			self.get_node("AnimatedSprite2D").play("vulnerable")
+		4, 3, 2:
+			self.get_node("AnimatedSprite2D").play("vulnerable_red")
+		1:
+			self.get_node("AnimatedSprite2D").play("vulnerable_black")
 	await get_tree().create_timer(0.8).timeout	# wait for the animation to end, a signal would be ideal
-	self.get_node("AnimatedSprite2D/Harm Zone/CollisionShape2D").position += Vector2(4, 3)# moves it for the animation
+	self.get_node("AnimatedSprite2D/Harm Zone/CollisionShape2D").position += Vector2(3,4)# moves it for the animation
 	self.get_node("AnimatedSprite2D/Harm Zone/CollisionShape2D").rotation_degrees = 90# rotates it for the animation
 
 #This code runs whenever the dragon is hurt
@@ -306,9 +322,18 @@ func enemy_take_damage():
 	print("Dragon hurt")
 	#final_boss_lives -= 1
 	get_node("AnimatedSprite2D/Harm Zone").collision_layer = 4# makes boss invulnerable
-	self.get_node("AnimatedSprite2D").play("idle")
-	self.get_node("AnimatedSprite2D/Harm Zone/CollisionShape2D").position -= Vector2(4, 3)# moves it back
+	self.get_node("AnimatedSprite2D").play_backwards()
+	self.get_node("AnimatedSprite2D/Harm Zone/CollisionShape2D").position -= Vector2(3, 4)# moves it back
 	self.get_node("AnimatedSprite2D/Harm Zone/CollisionShape2D").rotation_degrees = 0# rotates it back
+	await get_tree().create_timer(0.8).timeout	# wait for the animation to end, a signal would be ideal
+	#self.get_node("AnimatedSprite2D").play("idle")
+	match final_boss_lives:#play animation depending on phase
+		7, 6:
+			self.get_node("AnimatedSprite2D").play("idle")
+		5, 4, 3:
+			self.get_node("AnimatedSprite2D").play("idle_red")
+		2, 1:
+			self.get_node("AnimatedSprite2D").play("idle_black")
 	
 	for n in finalboss_enemies.get_children():# This kills the remaining ghosts, if any
 		if n.get_child_count() > 0 and n.name != "hunting_ghost":
@@ -319,9 +344,11 @@ func enemy_take_damage():
 	final_boss_lives -= 1
 	await get_tree().create_timer(1).timeout	#I think the ghost that spawns inside the dragon's area hurts it without this delay
 	if final_boss_lives > 0:
-		if final_boss_lives == 1:# for the last wave push the player so it doesn't get caught but circling ghosts
+		if final_boss_lives == 1:# for the last wave push the player so it doesn't get caught by circling ghosts
 			player.apply_knockback(self.get_node("AnimatedSprite2D/Harm Zone").global_position, 2000)
-			await get_tree().create_timer(1).timeout	
+			finalboss_enemies.get_node("hunting_ghost/AnimatedSprite2D/Harm Zone").monitoring = false# This is to avoid getting hurt by the ghost during pushback
+			await get_tree().create_timer(0.1).timeout	
+			finalboss_enemies.get_node("hunting_ghost/AnimatedSprite2D/Harm Zone").monitoring = true
 		can_attack = true# allows fire_breath to activate again
 		self.get_node("Timer").start(3)# restarts fire_breath timer
 		start_finalboss_wave(7 - final_boss_lives)
@@ -335,6 +362,15 @@ func _exit_tree():
 			finalboss_enemies.get_node("hunting_ghost").queue_free()
 	print("boss defeated")
 	finalboss_room_label.text = "CONGRATS!!!"
+	player.get_node("Camera2D").enabled = true
+	player.get_node("Boss_Camera2D").enabled = false
+	### This piece is to reset the boss camera
+	player.get_node("Boss_Camera2D").offset.x = 0
+	player.get_node("Boss_Camera2D").offset.y = 0# this is to compensate for the miniboss camera shift
+	player.get_node("Boss_Camera2D").drag_right_margin = 0.7
+	player.get_node("Boss_Camera2D").drag_left_margin = 0.7
+	player.get_node("Boss_Camera2D").drag_bottom_margin = 0.2# this is to compensate for the miniboss camera shift
+	###
 
 #This timer is for the dragon fire breath every 7 seconds, first one is 1 second
 func _on_timer_timeout() -> void:

@@ -586,6 +586,14 @@ layout_mode = 2
 text = "Farlight
 Games Ind"
 
+[node name="asset_credits_name_4" type="Label" parent="submenus/submenu_credits/asset_credits/asset_credits_names"]
+layout_mode = 2
+text = "Danger Goose"
+
+[node name="asset_credits_name_5" type="Label" parent="submenus/submenu_credits/asset_credits/asset_credits_names"]
+layout_mode = 2
+text = "MUSICHOLDER"
+
 [node name="submenu_start" type="Control" parent="submenus"]
 visible = false
 layout_mode = 1

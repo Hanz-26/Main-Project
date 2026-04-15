@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://coxn4tvurpndd" path="res://scripts/kill_zone.gd" id="1_kebdr"]
 
 [node name="Kill Zone" type="Area2D"]
+collision_layer = 8
 collision_mask = 2
 script = ExtResource("1_kebdr")
 

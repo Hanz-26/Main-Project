@@ -5,6 +5,7 @@ const SPEED = 130.0
 const JUMP_VELOCITY = -300.0
 var is_attacking = false
 var can_be_pushed = true
+var can_be_hurt = true
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var sword: Sprite2D = $sword
@@ -12,6 +13,7 @@ var can_be_pushed = true
 @onready var stab_collision: CollisionShape2D = $sword_attacks/stab_area/stab_collision
 @onready var swing_collision: CollisionShape2D = $sword_attacks/swing_area/swing_collision
 @onready var game_manager: Node = %"Game Manager"
+@onready var sound_effects: Node2D = $sound_effects
 
 
 func _physics_process(delta: float) -> void:
@@ -22,6 +24,7 @@ func _physics_process(delta: float) -> void:
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+		sound_effects.get_node("player_jump").play()
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -51,6 +54,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("stab") or Input.is_action_just_pressed("swing"):
 		if is_attacking or game_manager.hearts <= 0: #prevent attack spamming or attacking while dead which crashes game
 			return
+		sound_effects.get_node("player_sword").play()
 		is_attacking = true
 		sword.visible = false
 		sword_attacks.visible = true
@@ -79,7 +83,25 @@ func _on_sword_attacks_animation_finished() -> void:
 	stab_collision.position = Vector2(0,0) #reset stab collision to right side
 	is_attacking =  false
 
-func apply_knockback(hit_position: Vector2, force = 500):# hit_position is the global position of the enemy/hazard that hurt player; default force is 500, in some cases it's more
+func take_damage(): #called by harm_zone.gd
+	if can_be_hurt:
+		print("❤️ -1")
+		### Comment these three lines out for invincibility
+		game_manager.hearts -= 1
+		self.get_node("UI/Health/Hearts").get_child(game_manager.hearts * 2).visible = false
+		self.get_node("UI/Health/Hearts").get_child(game_manager.hearts * 2 + 1).visible = true
+		###
+		sound_effects.get_node("player_hurt").play()
+	if game_manager.hearts == 0:
+		game_manager.player_death()
+	else:
+		can_be_hurt = false
+		self.get_node("AnimatedSprite2D").self_modulate = Color("red")
+		await get_tree().create_timer(0.5).timeout	# invincibility time
+		self.get_node("AnimatedSprite2D").self_modulate = Color(1, 1, 1, 1)
+		can_be_hurt = true
+
+func apply_knockback(hit_position: Vector2, force = 750):# hit_position is the global position of the enemy/hazard that hurt player; default force is 500, in some cases it's more
 	if can_be_pushed:
 		var direction = (global_position - hit_position).normalized()
 		var timer = 0.15
@@ -96,6 +118,6 @@ func apply_knockback(hit_position: Vector2, force = 500):# hit_position is the g
 			timer -= get_physics_process_delta_time()
 		can_be_pushed = false#FIXME this can be abused to hide inside enemy while still invincible
 		is_attacking = true# This is finnicky, doesn't work if attack is playing while getting hit
-		await get_tree().create_timer(1).timeout	
+		await get_tree().create_timer(0.5).timeout	# unpushable time
 		can_be_pushed = true
 		is_attacking = false

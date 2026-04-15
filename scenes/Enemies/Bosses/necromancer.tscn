@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://d11cuybx78lig"]
+[gd_scene load_steps=14 format=3 uid="uid://d11cuybx78lig"]
 
 [ext_resource type="Texture2D" uid="uid://ce73a66o6bkr6" path="res://assets/sprites/Enemies/necromancer_.png" id="1_4qyvd"]
 [ext_resource type="Script" uid="uid://bph45rd7ktfrr" path="res://scripts/necromancer_mini_boss.gd" id="1_rf5tu"]
@@ -20,6 +20,22 @@ region = Rect2(120, 0, 24, 24)
 atlas = ExtResource("1_4qyvd")
 region = Rect2(96, 0, 24, 24)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_rf5tu"]
+atlas = ExtResource("1_4qyvd")
+region = Rect2(144, 72, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2jnar"]
+atlas = ExtResource("1_4qyvd")
+region = Rect2(168, 72, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wk43b"]
+atlas = ExtResource("1_4qyvd")
+region = Rect2(96, 96, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bmjbk"]
+atlas = ExtResource("1_4qyvd")
+region = Rect2(120, 96, 24, 24)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_yuri1"]
 animations = [{
 "frames": [{
@@ -38,6 +54,23 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rf5tu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2jnar")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wk43b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bmjbk")
+}],
+"loop": false,
+"name": &"vulnerable",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ww5mx"]
@@ -50,9 +83,8 @@ script = ExtResource("1_rf5tu")
 position = Vector2(30.147533, -35.543285)
 scale = Vector2(2.9877055, 2.9877055)
 sprite_frames = SubResource("SpriteFrames_yuri1")
-animation = &"idle"
+animation = &"vulnerable"
 autoplay = "idle"
-frame_progress = 0.85921514
 
 [node name="Harm Zone" parent="AnimatedSprite2D" instance=ExtResource("2_lhxem")]
 collision_layer = 4

@@ -51,10 +51,12 @@ func _exit_tree():
 		player.get_node("Boss_Camera2D").enabled = false
 		miniboss_room_platforms.get_node("miniboss_gate").visible = false
 		miniboss_room_platforms.get_node("miniboss_gate/AnimationPlayer").play("RESET")
+		miniboss_room_platforms.get_node("../miniboss_exit_door").queue_free()
 	
 # code to run when necromancer miniboss is vulnerable
 func necromancer_vulnerable():
 	print("miniboss is vulnerable")
+	get_node("AnimatedSprite2D").play("vulnerable")
 	get_node("AnimatedSprite2D/Harm Zone").collision_layer = 1
 	miniboss_room_platforms.get_node("miniboss_shield").visible = false
 	miniboss_room_platforms.get_node("miniboss_shield/CollisionShape2D").set_deferred("disabled", true)
@@ -72,11 +74,14 @@ func enemy_take_damage():
 			for c in n.get_children():
 				c.queue_free()
 	if miniboss_lives > 0:
+		get_node("AnimatedSprite2D").play_backwards("vulnerable")
 		#player.apply_knockback(self.global_position)
 		player.global_position = miniboss_room_spawns.get_node("floating_skulls_spawns/wave_3/left_spawn").global_position + Vector2(50,0)
 		miniboss_room_platforms.get_node("miniboss_shield").visible = true
 		miniboss_room_platforms.get_node("miniboss_shield/CollisionShape2D").set_deferred("disabled", false)
-		await get_tree().create_timer(1).timeout	
+		await get_tree().create_timer(0.6).timeout	
+		get_node("AnimatedSprite2D").play("idle")
+		await get_tree().create_timer(0.4).timeout	
 	match miniboss_lives:
 		2: spawn_wave_2()
 		1: spawn_wave_3()
@@ -141,7 +146,7 @@ func _on_wave_1_child_exiting_tree(node: Node) -> void:
 		if enemy_num % 2 == 0:
 			necromancer_vulnerable()
 		elif miniboss_lives == 3 and game_manager.lives >= 0:
-			game_manager.take_damage()
+			player.take_damage()
 			player.apply_knockback(node.global_position)
 
 func spawn_wave_2():
@@ -183,7 +188,7 @@ func _on_wave_2_child_exiting_tree(node: Node) -> void:
 		if enemy_num % 5 == 3:
 			necromancer_vulnerable()
 		elif miniboss_lives == 2 and game_manager.lives >= 0:
-			game_manager.take_damage()
+			player.take_damage()
 			player.apply_knockback(node.global_position)
 
 var wave_3_div = randi_range(3,9)# divisor
@@ -226,5 +231,5 @@ func _on_wave_3_child_exiting_tree(node: Node) -> void:
 		if enemy_num % wave_3_div == wave_3_rem:
 			necromancer_vulnerable()
 		elif miniboss_lives == 1 and game_manager.lives >= 0:
-			game_manager.take_damage()
+			player.take_damage()
 			player.apply_knockback(node.global_position)

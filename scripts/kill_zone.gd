@@ -1,8 +1,10 @@
 extends Area2D
 
 @onready var timer: Timer = $Timer
-@onready var game_manager: Node = %"Game Manager"
-@onready var player: CharacterBody2D = $"../Player"
+#@onready var game_manager: Node = %"Game Manager"
+#@onready var player: CharacterBody2D = $"../Player"
+@onready var game_manager: Node = get_tree().current_scene.get_node("Game Manager")
+@onready var player: CharacterBody2D = get_tree().current_scene.get_node("Player")
 
 '''
 #Original code from youtube tutorial
@@ -23,4 +25,5 @@ func _on_body_entered(body: Node2D) -> void:
 	player.get_node("UI/Health/Hearts").get_child(1).visible = true
 	player.get_node("UI/Health/Hearts").get_child(3).visible = true
 	player.get_node("UI/Health/Hearts").get_child(5).visible = true
+	game_manager.hearts = 0# This is necessary because otherwise you can press escape and leave the game over menu back to the game
 	game_manager.player_death()

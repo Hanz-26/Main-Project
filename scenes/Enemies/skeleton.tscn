@@ -1,7 +1,31 @@
-[gd_scene load_steps=9 format=3 uid="uid://ctoi65vmimc3d"]
+[gd_scene load_steps=15 format=3 uid="uid://ctoi65vmimc3d"]
 
 [ext_resource type="Texture2D" uid="uid://c085udvjgh6f8" path="res://assets/sprites/Enemies/skeleton_.png" id="1_apicw"]
 [ext_resource type="PackedScene" uid="uid://cjxbpfwu0kdky" path="res://scenes/harm_zone.tscn" id="3_8f06n"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_apicw"]
+atlas = ExtResource("1_apicw")
+region = Rect2(48, 120, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8f06n"]
+atlas = ExtResource("1_apicw")
+region = Rect2(72, 120, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yuri1"]
+atlas = ExtResource("1_apicw")
+region = Rect2(0, 144, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ww5mx"]
+atlas = ExtResource("1_apicw")
+region = Rect2(24, 144, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uaqeq"]
+atlas = ExtResource("1_apicw")
+region = Rect2(48, 144, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_24a26"]
+atlas = ExtResource("1_apicw")
+region = Rect2(72, 144, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bqk5g"]
 atlas = ExtResource("1_apicw")
@@ -21,6 +45,29 @@ region = Rect2(72, 24, 24, 24)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yuri1"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_apicw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8f06n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yuri1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ww5mx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uaqeq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_24a26")
+}],
+"loop": false,
+"name": &"death",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_bqk5g")
@@ -48,9 +95,8 @@ size = Vector2(10.144928, 15.556976)
 position = Vector2(9.85759, -15.2533455)
 scale = Vector2(1.2968775, 1.2968775)
 sprite_frames = SubResource("SpriteFrames_yuri1")
-animation = &"idle"
+animation = &"death"
 autoplay = "idle"
-frame_progress = 0.9554962
 
 [node name="Harm Zone" parent="AnimatedSprite2D" instance=ExtResource("3_8f06n")]
 

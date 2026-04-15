@@ -1,8 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://bis0588usypdd"]
+[gd_scene load_steps=35 format=3 uid="uid://bis0588usypdd"]
 
 [ext_resource type="Texture2D" uid="uid://fc3brnvmy68v" path="res://assets/sprites/Enemies/dragon_.png" id="1_7vfg4"]
 [ext_resource type="Script" uid="uid://c7ylpfbtgmond" path="res://scripts/Enemies/dragon_final_boss.gd" id="1_yc5l8"]
 [ext_resource type="PackedScene" uid="uid://cjxbpfwu0kdky" path="res://scenes/harm_zone.tscn" id="2_sshda"]
+[ext_resource type="Texture2D" uid="uid://bb55lg3bdlf8a" path="res://assets/sprites/Enemies/dragon_black.png" id="3_putpi"]
+[ext_resource type="Texture2D" uid="uid://bxw5fdk25l6so" path="res://assets/sprites/Enemies/dragon_red.png" id="4_i1fo8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yc5l8"]
 atlas = ExtResource("1_7vfg4")
@@ -18,6 +20,38 @@ region = Rect2(48, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i1fo8"]
 atlas = ExtResource("1_7vfg4")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eqrud"]
+atlas = ExtResource("3_putpi")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p4wee"]
+atlas = ExtResource("3_putpi")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jm6yl"]
+atlas = ExtResource("3_putpi")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_necbo"]
+atlas = ExtResource("3_putpi")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_anj60"]
+atlas = ExtResource("4_i1fo8")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0jit0"]
+atlas = ExtResource("4_i1fo8")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kq1e0"]
+atlas = ExtResource("4_i1fo8")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q7lpw"]
+atlas = ExtResource("4_i1fo8")
 region = Rect2(72, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r2f6b"]
@@ -38,6 +72,46 @@ region = Rect2(48, 144, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nduns"]
 atlas = ExtResource("1_7vfg4")
+region = Rect2(72, 144, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dmkr1"]
+atlas = ExtResource("3_putpi")
+region = Rect2(48, 120, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_owan5"]
+atlas = ExtResource("3_putpi")
+region = Rect2(0, 144, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ffrcb"]
+atlas = ExtResource("3_putpi")
+region = Rect2(24, 144, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lbskv"]
+atlas = ExtResource("3_putpi")
+region = Rect2(48, 144, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_olha5"]
+atlas = ExtResource("3_putpi")
+region = Rect2(72, 144, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t1orr"]
+atlas = ExtResource("4_i1fo8")
+region = Rect2(48, 120, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jnkm4"]
+atlas = ExtResource("4_i1fo8")
+region = Rect2(0, 144, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qfrft"]
+atlas = ExtResource("4_i1fo8")
+region = Rect2(24, 144, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x5q6k"]
+atlas = ExtResource("4_i1fo8")
+region = Rect2(48, 144, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gquvw"]
+atlas = ExtResource("4_i1fo8")
 region = Rect2(72, 144, 24, 24)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yuri1"]
@@ -61,6 +135,40 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_eqrud")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p4wee")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jm6yl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_necbo")
+}],
+"loop": true,
+"name": &"idle_black",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_anj60")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0jit0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kq1e0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q7lpw")
+}],
+"loop": true,
+"name": &"idle_red",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_r2f6b")
 }, {
 "duration": 1.0,
@@ -78,10 +186,50 @@ animations = [{
 "loop": false,
 "name": &"vulnerable",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dmkr1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_owan5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ffrcb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lbskv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_olha5")
+}],
+"loop": false,
+"name": &"vulnerable_black",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t1orr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jnkm4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qfrft")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x5q6k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gquvw")
+}],
+"loop": false,
+"name": &"vulnerable_red",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ww5mx"]
-size = Vector2(10.144928, 15.556976)
+size = Vector2(10.144928, 17.86859)
 
 [node name="dragon_boss" type="Node2D"]
 script = ExtResource("1_yc5l8")
@@ -92,12 +240,14 @@ scale = Vector2(5.862705, 5.862705)
 sprite_frames = SubResource("SpriteFrames_yuri1")
 animation = &"idle"
 autoplay = "idle"
+frame_progress = 0.16806757
 
 [node name="Harm Zone" parent="AnimatedSprite2D" instance=ExtResource("2_sshda")]
 collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Harm Zone"]
-position = Vector2(0.17580462, 3.956974)
+position = Vector2(0.17580509, 2.8011675)
+scale = Vector2(1.0000001, 1.0000001)
 shape = SubResource("RectangleShape2D_ww5mx")
 
 [node name="fire_breath" type="Node2D" parent="."]
