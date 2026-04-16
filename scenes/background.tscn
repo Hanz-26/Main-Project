@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bbgscene12345"]
+
+[ext_resource type="Script" uid="uid://bbackground1a" path="res://scripts/background.gd" id="1_bg"]
+
+[node name="Background" type="Node2D"]
+z_index = -100
+script = ExtResource("1_bg")

@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://blvendscn123"]
+
+[ext_resource type="Script" uid="uid://blevelend1234" path="res://scripts/level_end.gd" id="1_lend"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lend"]
+size = Vector2(20, 80)
+
+[node name="LevelEnd" type="Area2D" unique_id=444444001]
+script = ExtResource("1_lend")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=444444002]
+position = Vector2(0, -40)
+shape = SubResource("RectangleShape2D_lend")
