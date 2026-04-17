@@ -9,11 +9,12 @@ var current_menu# menu node currently being displayed
 var movement_is_blocked = false# this variable is to limit selection cursor speed
 var selected_save_file# this variable hold the integer (0, 1, 2) save file that was selected in submenu_start
 
-#FIXME the settings are not saved when returning to main menu from level. Use variables to hold the settings values and then read those values
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if !current_menu:# This resets the sound and brightness, current_menu is only null when first launching the scene
+		Global_World_Environment.environment.adjustment_brightness = 1
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear_to_db(1))
 	current_menu = self.get_node("main_menu_text")
 	current_menu.visible = true
 	selected_menu_index = 0# hide to keep cursor memory
