@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://drg1rypkv1pb3"]
 
 [ext_resource type="Script" uid="uid://c0tmdmlsg1llb" path="res://scripts/slime.gd" id="1_n6pvg"]
+[ext_resource type="AudioStream" uid="uid://rl634hdjjvle" path="res://assets/sounds/explosion.wav" id="3_sl"]
 [ext_resource type="Texture2D" uid="uid://cadrmcm77a2ic" path="res://assets/sprites/slime_green.png" id="1_p2gj0"]
 [ext_resource type="PackedScene" uid="uid://d384i5lt5l7eo" path="res://scenes/killzone.tscn" id="2_n6pvg"]
 
@@ -43,6 +44,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0l8pv"]
 size = Vector2(10, 15)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sl_stomp"]
+size = Vector2(18, 6)
+
 [node name="Slime" type="Node2D" unique_id=241243577]
 script = ExtResource("1_n6pvg")
 
@@ -66,3 +70,15 @@ target_position = Vector2(9, 0)
 [node name="RayCastLeft" type="RayCast2D" parent="." unique_id=1526413593]
 position = Vector2(0, 4)
 target_position = Vector2(-10, 0)
+
+[node name="HurtSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_sl")
+bus = &"SFX"
+
+[node name="StompHitbox" type="Area2D" parent="." unique_id=1526413600]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StompHitbox" unique_id=1526413601]
+position = Vector2(0, -9)
+shape = SubResource("RectangleShape2D_sl_stomp")

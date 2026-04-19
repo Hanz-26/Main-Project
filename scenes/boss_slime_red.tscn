@@ -1,0 +1,97 @@
+[gd_scene format=3 uid="uid://bredslim00001"]
+
+[ext_resource type="Script" uid="uid://dbossslimgd1a" path="res://scripts/boss_slime.gd" id="1_bsr"]
+[ext_resource type="Texture2D" uid="uid://dsnias3n28nvj" path="res://assets/sprites/slime_purple.png" id="2_bsr"]
+[ext_resource type="PackedScene" uid="uid://d384i5lt5l7eo" path="res://scenes/killzone.tscn" id="3_bsr"]
+[ext_resource type="AudioStream" uid="uid://rl634hdjjvle" path="res://assets/sounds/explosion.wav" id="4_bsr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_br01"]
+atlas = ExtResource("2_bsr")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_br02"]
+atlas = ExtResource("2_bsr")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_br03"]
+atlas = ExtResource("2_bsr")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_br04"]
+atlas = ExtResource("2_bsr")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_br01"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_br01")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_br02")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_br03")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_br04")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_br01"]
+size = Vector2(10, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_br_enc"]
+size = Vector2(180, 90)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_br_stomp"]
+size = Vector2(45, 6)
+
+[node name="BossSlimeRed" type="Node2D"]
+script = ExtResource("1_bsr")
+SPEED = 120.0
+difficulty = "hard"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=700002]
+scale = Vector2(3.0, 3.0)
+modulate = Color(1, 0.25, 0.25, 1)
+sprite_frames = SubResource("SpriteFrames_br01")
+autoplay = "default"
+frame = 0
+
+[node name="Killzone" parent="AnimatedSprite2D" unique_id=700003 instance=ExtResource("3_bsr")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Killzone" unique_id=700004]
+position = Vector2(0, 4.5)
+shape = SubResource("RectangleShape2D_br01")
+
+[node name="RayCastRight" type="RayCast2D" parent="." unique_id=700005]
+position = Vector2(0, 4)
+target_position = Vector2(42, 0)
+
+[node name="RayCastLeft" type="RayCast2D" parent="." unique_id=700006]
+position = Vector2(0, 4)
+target_position = Vector2(-42, 0)
+
+[node name="EncounterZone" type="Area2D" parent="." unique_id=700007]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EncounterZone" unique_id=700008]
+shape = SubResource("RectangleShape2D_br_enc")
+
+[node name="HurtSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_bsr")
+bus = &"SFX"
+
+[node name="StompHitbox" type="Area2D" parent="." unique_id=700009]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StompHitbox" unique_id=700010]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_br_stomp")
+
+[connection signal="body_entered" from="EncounterZone" to="." method="_on_encounter_zone_body_entered"]
