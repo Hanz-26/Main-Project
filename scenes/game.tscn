@@ -1,7 +1,7 @@
 [gd_scene load_steps=30 format=3 uid="uid://cuv4vme4rwno0"]
 
 [ext_resource type="Script" uid="uid://dxuf40asaxghr" path="res://scripts/game_manager.gd" id="1_l4ihi"]
-[ext_resource type="PackedScene" uid="uid://dqnaqj8yb6hwd" path="res://scenes/player.tscn" id="1_rbmkf"]
+[ext_resource type="PackedScene" uid="uid://diy1rbnx7ofgo" path="res://scenes/player.tscn" id="1_rbmkf"]
 [ext_resource type="FontFile" uid="uid://5m5skid6fqwx" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="2_nlliu"]
 [ext_resource type="Texture2D" uid="uid://bb4u02liig15i" path="res://assets/sprites/world_tileset.png" id="2_r1crl"]
 [ext_resource type="PackedScene" uid="uid://bgv5v2fxqlswe" path="res://scenes/platform.tscn" id="3_cmfc3"]
@@ -303,22 +303,15 @@ layer_2/modulate = Color(0.078431375, 0.59607846, 0.8627451, 1)
 [node name="Player" parent="." instance=ExtResource("1_rbmkf")]
 position = Vector2(34, 37)
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
+[node name="Camera2D2" type="Camera2D" parent="Player"]
 position = Vector2(0, -7)
 zoom = Vector2(2.2, 2.2)
 limit_bottom = 100000000
 limit_smoothed = true
 position_smoothing_enabled = true
 
-[node name="Camera2D" type="Camera2D" parent="Player/Camera2D"]
-position = Vector2(0, -7)
-zoom = Vector2(2.5, 2.5)
-limit_bottom = 308
-limit_smoothed = true
-position_smoothing_enabled = true
-
 [node name="Killzone" parent="." instance=ExtResource("5_x8euu")]
-position = Vector2(1239, 339)
+position = Vector2(1234, 334)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
 position = Vector2(-267, -244)

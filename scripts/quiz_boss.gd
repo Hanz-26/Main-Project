@@ -46,7 +46,23 @@ var quiz_ui = null
 var game_manager = null
 var player_node = null
 
+var _question_pool = []
+var _pool_index = 0
+
+func _shuffle_pool() -> void:
+	_question_pool = range(quiz_questions.size())
+	_question_pool.shuffle()
+	_pool_index = 0
+
+func _next_question():
+	if _pool_index >= _question_pool.size():
+		_shuffle_pool()
+	var idx = _question_pool[_pool_index]
+	_pool_index += 1
+	return quiz_questions[idx]
+
 func _ready():
+	_shuffle_pool()
 	start_x = position.x
 	if animated_sprite:
 		animated_sprite.play("idle")
@@ -123,7 +139,7 @@ func show_quiz():
 					child.set_process(false)
 
 	# Pick a random question
-	current_question = quiz_questions[randi() % quiz_questions.size()]
+	current_question = _next_question()
 
 	# Create quiz UI
 	var canvas = player_node.get_node_or_null("UI")

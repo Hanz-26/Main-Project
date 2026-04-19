@@ -11,26 +11,15 @@ var is_attacking = false
 @onready var swing_collision = get_node_or_null("sword_attacks/swing_area/swing_collision")
 
 var game_manager = null
+var _hit_this_attack = []  # track already-hit enemies per attack
 
 func _ready():
 	game_manager = get_tree().current_scene.get_node_or_null("GameManager")
 	if not game_manager:
 		game_manager = get_tree().current_scene.get_node_or_null("Game Manager")
 
-	# Connect animation_finished signal
 	if sword_attacks and not sword_attacks.animation_finished.is_connected(_on_sword_attacks_animation_finished):
 		sword_attacks.animation_finished.connect(_on_sword_attacks_animation_finished)
-
-	# Connect area_entered signals so sword kills enemies
-	var stab_area = get_node_or_null("sword_attacks/stab_area")
-	if stab_area and not stab_area.area_entered.is_connected(_on_weapon_area_entered):
-		stab_area.area_entered.connect(_on_weapon_area_entered)
-		print("Stab area_entered connected")
-
-	var swing_area = get_node_or_null("sword_attacks/swing_area")
-	if swing_area and not swing_area.area_entered.is_connected(_on_weapon_area_entered):
-		swing_area.area_entered.connect(_on_weapon_area_entered)
-		print("Swing area_entered connected")
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
@@ -76,22 +65,45 @@ func _physics_process(delta: float) -> void:
 			if sword:
 				sword.visible = false
 			sword_attacks.visible = true
-			stab_collision.disabled = false
-			if swing_collision:
-				swing_collision.disabled = false
 
-			# Hansel's approach: flip_v + offset for left-facing
-			if animated_sprite.flip_h == true:
-				sword_attacks.flip_v = true
-				sword_attacks.offset = Vector2(0, 35)
-				stab_collision.position = Vector2(0, 35)
+			var facing_left = animated_sprite.flip_h
+			# sword_attacks is rotated 90°: flip_v = world left/right mirror, flip_h = world up/down mirror
+			sword_attacks.flip_v = facing_left
+			sword_attacks.position.x = -19.707367 if facing_left else 19.707367
 
 			if Input.is_action_just_pressed("stab"):
+				stab_collision.disabled = false
+				if swing_collision:
+					swing_collision.disabled = true
+				sword_attacks.flip_h = true  # stab sprite is upside down in world space, correct it
 				sword_attacks.play("stab")
-			if Input.is_action_just_pressed("swing"):
+			elif Input.is_action_just_pressed("swing"):
+				if swing_collision:
+					swing_collision.disabled = false
+				stab_collision.disabled = true
+				sword_attacks.flip_h = false
 				sword_attacks.play("swing")
 
+	if is_attacking:
+		_poll_sword_hits()
+
 	move_and_slide()
+
+func _poll_sword_hits() -> void:
+	var enemies = get_tree().get_nodes_in_group("enemies")
+	print("DEBUG sword poll - enemies in group: ", enemies.size(), " | sword pos: ", sword_attacks.global_position)
+	for enemy in enemies:
+		if not is_instance_valid(enemy) or enemy in _hit_this_attack:
+			continue
+		var dist = enemy.global_position.distance_to(sword_attacks.global_position)
+		print("DEBUG enemy: ", enemy.name, " dist: ", dist)
+		if dist < 60.0:
+			_hit_this_attack.append(enemy)
+			print("Sword hit: ", enemy.name)
+			if enemy.has_method("enemy_take_damage"):
+				enemy.enemy_take_damage()
+			else:
+				enemy.queue_free()
 
 # Signal: attack animation finished - reset everything
 func _on_sword_attacks_animation_finished() -> void:
@@ -99,30 +111,15 @@ func _on_sword_attacks_animation_finished() -> void:
 		sword.visible = true
 	if sword_attacks:
 		sword_attacks.visible = false
+		sword_attacks.flip_h = false
 		sword_attacks.flip_v = false
-		sword_attacks.offset = Vector2(0, 0)
+		sword_attacks.position.x = 19.707367  # reset sword to right side
 	if swing_collision:
 		swing_collision.disabled = true
-		swing_collision.position = Vector2(0, 0)
 	if stab_collision:
 		stab_collision.disabled = true
-		stab_collision.position = Vector2(0, 0)
+	_hit_this_attack.clear()
 	is_attacking = false
-
-func _on_weapon_area_entered(area: Area2D) -> void:
-	# Sword hit an enemy's area - kill it!
-	var enemy = area.get_parent()
-	if enemy == self or enemy == sword_attacks:
-		return  # Don't hit ourselves
-	# Walk up the tree to find the enemy root
-	if not enemy.has_method("enemy_take_damage") and not (enemy is Node2D):
-		enemy = enemy.get_parent()
-	if enemy:
-		print("Sword hit: ", enemy.name)
-		if enemy.has_method("enemy_take_damage"):
-			enemy.enemy_take_damage()
-		elif enemy.name != "Player" and enemy != self:
-			enemy.queue_free()
 
 func apply_knockback(hit_position: Vector2):
 	var dir = (global_position - hit_position).normalized()
