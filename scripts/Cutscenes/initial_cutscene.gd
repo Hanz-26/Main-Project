@@ -44,7 +44,7 @@ func update_cutscene():
 		self.get_node("characters").visible = !self.get_node("characters").visible
 		self.get_node("narration_text").visible = !self.get_node("narration_text").visible
 	if text_index >= narration_text_list.size() and self.get_node("narration_text").visible == true:# last text, launch level
-		get_tree().change_scene_to_file("res://scenes/castle_level.tscn")
+		get_tree().change_scene_to_file("res://scenes/Levels/dionny_level.tscn")
 	if self.get_node("narration_text").visible == true and text_index < narration_text_list.size():# checks if narration is shown
 		self.get_node("narration_text").text = narration_text_list[text_index]
 		text_index += 1

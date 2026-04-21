@@ -12,6 +12,7 @@ var selected_save_file# this variable hold the integer (0, 1, 2) save file that 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	#print("Global.is_game_complete = ", Global.is_game_complete)
 	if !current_menu:# This resets the sound and brightness, current_menu is only null when first launching the scene
 		Global_World_Environment.environment.adjustment_brightness = 1
 		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear_to_db(1))
@@ -258,11 +259,13 @@ func select_file(save_file):# This is called when pressing Enter on a save file
 	await get_tree().create_timer(0.35).timeout	
 	movement_is_blocked = false
 	if save_file.get_node("Panel/new_game").visible:# If save empty save file and launch first level
-		Global.save_file(selected_save_file)
+		#Global.save_file(selected_save_file)
+		Global.save_file(0, 3, 0, selected_save_file)
 		save_file_start(selected_save_file)
 		#get_tree().change_scene_to_file("res://scenes/castle_level.tscn")
 	else:
 		current_menu = current_menu.get_node("file_selection_options")
+
 		current_menu.visible = true
 		selected_menu_index = 0
 		selected_menu = current_menu.get_child(0)
@@ -294,5 +297,10 @@ func save_file_start(save_index):#starts the game from the selected save
 	Global.active_save_file_index = int(save_index)# This keeps track in global of which save file is currently active
 	var save_file_level = Global.save_files_slots[int(save_index)].get_value("Player", "level")
 	match save_file_level:
-		1: get_tree().change_scene_to_file("res://scenes/Cutscenes/initial_cutscene.tscn")
-		2: print("launch level 2")
+		0:# new game launch cutscene
+			get_tree().change_scene_to_file("res://scenes/Cutscenes/initial_cutscene.tscn")
+			Global.save_file(1, 3, 0, selected_save_file)
+		1: get_tree().change_scene_to_file("res://scenes/Levels/dionny_level.tscn")
+		2: get_tree().change_scene_to_file("res://scenes/Levels/carlos_level.tscn")
+		3: get_tree().change_scene_to_file("res://scenes/Levels/manuel_level.tscn")
+		4: get_tree().change_scene_to_file("res://scenes/castle_level.tscn")

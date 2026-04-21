@@ -1,0 +1,8 @@
+[gd_scene load_steps=0 format=3 uid="uid://bfinalboss001"]
+
+[ext_resource type="PackedScene" uid="uid://c8op7guaga0yo" path="res://Scenes/carlos_quiz_boss.tscn" id="1_qb"]
+
+[node name="final_boss" instance=ExtResource("1_qb")]
+boss_lives = 3
+scale = Vector2(1.5, 1.5)
+modulate = Color(1, 0.55, 0.55, 1)

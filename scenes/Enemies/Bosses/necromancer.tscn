@@ -83,7 +83,7 @@ script = ExtResource("1_rf5tu")
 position = Vector2(30.147533, -35.543285)
 scale = Vector2(2.9877055, 2.9877055)
 sprite_frames = SubResource("SpriteFrames_yuri1")
-animation = &"vulnerable"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="Harm Zone" parent="AnimatedSprite2D" instance=ExtResource("2_lhxem")]

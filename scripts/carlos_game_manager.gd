@@ -1,3 +1,24 @@
+'extends Node
+
+var hearts = 3
+var score = 0
+var lives = 3
+
+func _init():
+	if Global.active_save_file_index != null and Global.save_files_slots[Global.active_save_file_index] != null:
+		score = Global.save_files_slots[Global.active_save_file_index].get_value("Player", "coins")
+		lives = Global.save_files_slots[Global.active_save_file_index].get_value("Player", "lives")
+
+@onready var player: CharacterBody2D = $"../Player"
+@onready var pause_menu = player.get_node("UI/pause_menu")
+@onready var player_spawn: Marker2D = $"../Spawn_locations/Initial_spawn"# Original initial_spawn location (x,y) = (55.0, 69.0)
+@onready var bosses: Node2D = $"../Enemies/Bosses"
+
+#These two variables are for handling pause menu
+var selected_menu
+var selected_menu_index = 0
+var movement_is_blocked = false'
+
 extends Node
 
 #THIS NODE MUST BE SET TO ALWAYS BE RUNNING
@@ -14,7 +35,7 @@ var can_be_hurt = true# This variable is for temporary invulnerability after get
 
 @onready var player: CharacterBody2D = $"../Player"
 @onready var pause_menu = player.get_node("UI/pause_menu")
-@onready var player_spawn: Marker2D = $"../Spawn_locations/Initial_spawn"# Original initial_spawn location (x,y) = (126.991, -37.986)
+@onready var player_spawn: Marker2D = $"../Spawn_locations/Initial_spawn"# Original initial_spawn location (x,y) = (29.822, 75.51)
 @onready var bosses: Node2D = $"../Enemies/Bosses"
 
 #These variables are for handling pause menu
@@ -22,9 +43,12 @@ var selected_menu
 var selected_menu_index = 0
 var movement_is_blocked = false
 
+
+
+
 func _ready():
 	get_tree().paused = false
-	player.get_node("Camera2D").limit_bottom = -5
+	player.get_node("Camera2D").limit_bottom = 125
 	hearts = 3
 	player.get_node("UI/Health/Hearts").get_child(0).visible = true
 	player.get_node("UI/Health/Hearts").get_child(2).visible = true
@@ -53,6 +77,28 @@ func _process(delta: float) -> void:
 			await get_tree().create_timer(0.35).timeout	
 			movement_is_blocked = false
 	
+	'if Input.is_action_just_pressed("confirm"):
+		if pause_menu.visible == true and pause_menu.get_node("pause_selections").visible == true:
+			if pause_menu.get_node("quit_confirmation").visible == false:# pause menu
+				match selected_menu.name:
+					"pause_resume":
+						get_tree().paused = false
+						pause_menu.visible = false
+						pause_menu.get_node("quit_confirmation").visible = false
+					"pause_quit":
+						pause_menu.get_node("quit_confirmation").visible = true
+						selected_menu_index = 0
+						selected_menu = pause_menu.get_node("pause_selections").get_child(selected_menu_index)
+						pause_menu.get_node("select_icon").global_position = selected_menu.global_position + Vector2(-25,0)
+			else:# quit game confirmation
+				match selected_menu.name:
+						"pause_resume":
+							get_tree().paused = false
+							pause_menu.visible = false
+							pause_menu.get_node("quit_confirmation").visible = false
+						"pause_quit":
+							get_tree().paused = false
+							get_tree().change_scene_to_file("res://Scenes/Menus/main_menu.tscn")'
 	if Input.is_action_just_pressed("confirm"):
 		if pause_menu.visible == true and pause_menu.get_node("pause_selections").visible == true:
 			if pause_menu.get_node("quit_confirmation").visible == false:# pause menu
@@ -85,7 +131,17 @@ func _process(delta: float) -> void:
 	
 	#Code below handles pause menu
 	#Game Manager node -> Inspector -> Process -> Mode = Always: This allows the node run while scene is paused
-	if Input.is_action_just_pressed("escape"):
+	if Input.is_action_just_pressed("escape") and !player.has_node("UI/QuizUI"): # QuizUI is added by bosses for quiz questions
+		'if pause_menu.visible == true:
+			get_tree().paused = false
+			pause_menu.visible = false
+			pause_menu.get_node("quit_confirmation").visible = false
+		else:
+			get_tree().paused = true
+			pause_menu.visible = true
+			selected_menu_index = 0
+			selected_menu = pause_menu.get_node("pause_selections").get_child(selected_menu_index)
+			pause_menu.get_node("select_icon").global_position = selected_menu.global_position + Vector2(-25,0)'
 		if lives >= 0 and hearts > 0:
 			pause_menu.get_node("pause_title").text = "Game Paused"
 			if pause_menu.visible == true:# exiting pause menu
@@ -97,7 +153,7 @@ func _process(delta: float) -> void:
 				pause_menu.visible = true
 				selected_menu_index = 0
 				selected_menu = pause_menu.get_node("pause_selections").get_child(selected_menu_index)
-				pause_menu.get_node("select_icon").global_position = selected_menu.global_position + Vector2(-25,0)
+				pause_menu.get_node("select_icon").global_position = selected_menu.global_position + Vector2(-25,0)	
 
 func add_point():
 	score += 1
@@ -108,25 +164,37 @@ func add_point():
 		player.get_node("UI/Health/Lives/Lives_count").text = ("x" + str(lives))
 	player.get_node("UI/Coins/Coins_counter").text = "x" + str(score)
 
-'''
-func take_damage(): #called by harm_zone.gd
-	if can_be_hurt:
-		print("❤️ -1")
-		### Comment these three lines out for invincibility
-		#hearts -= 1
-		#player.get_node("UI/Health/Hearts").get_child(hearts * 2).visible = false
-		#player.get_node("UI/Health/Hearts").get_child(hearts * 2 + 1).visible = true
-		###
+'func take_damage(): #called by harm_zone.gd
+	hearts -= 1
+	player.get_node("UI/Health/Hearts").get_child(hearts * 2).visible = false
+	player.get_node("UI/Health/Hearts").get_child(hearts * 2 + 1).visible = true
+	
 	if hearts == 0:
+		#print("Hit by enemy")
+		#print("Hearts left: ", hearts)
+		#print("You are dead")
 		player_death()
-	else:
-		can_be_hurt = false
-		player.get_node("AnimatedSprite2D").self_modulate = Color("red")
-		await get_tree().create_timer(0.5).timeout	
-		player.get_node("AnimatedSprite2D").self_modulate = Color(1, 1, 1, 1)
-		can_be_hurt = true'''
+	#else:
+	#	print("Hit by enemy")
+	#	print("Hearts left: ", hearts)'
 
+'func player_death():
+	Engine.time_scale = 0.5
+	await get_tree().create_timer(0.5).timeout	
+	if lives > 0:
+		lives -= 1
+		print("Lives: ", lives)	
+		_ready()
+	else:
+		get_tree().reload_current_scene()
+		print("Game Over")
+	Engine.time_scale = 1
+	if bosses and bosses.has_node("necromancer_boss"):#resets miniboss fight if still present
+		bosses.get_node("necromancer_boss").reset_boss()'
+		
 func player_death():
+	if player.has_node("UI/QuizUI"):# deletes quiz if player died during one
+		player.get_node("UI/QuizUI").queue_free()
 	Engine.time_scale = 0.5
 	await get_tree().create_timer(0.1).timeout	
 	if lives > 0:
@@ -136,10 +204,7 @@ func player_death():
 	else:
 		game_over()
 	Engine.time_scale = 1
-	if bosses.get_node("necromancer_boss"):#resets miniboss fight if still present
-		bosses.get_node("necromancer_boss").reset_boss()
-	if bosses.get_node("dragon_final_boss"):#resets dragon boss fight if still present
-		bosses.get_node("dragon_final_boss").reset_boss()
+
 
 func game_over():# shows game over screen
 	get_tree().paused = true
@@ -153,8 +218,7 @@ func game_over():# shows game over screen
 
 func _on_level_end_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
-		print("game complete")
-		await get_tree().create_timer(5).timeout	
-		Global.is_game_complete = true
+		Global.save_file(3, lives, score)
+		#await get_tree().create_timer(3).timeout	
+		#get_tree().change_scene_to_file("res://scenes/Levels/manuel_level.tscn")
 		get_tree().change_scene_to_file("res://scenes/level_transition.tscn")
-	pass # Replace with function body.

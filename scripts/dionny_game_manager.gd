@@ -1,20 +1,17 @@
 extends Node
 
-#THIS NODE MUST BE SET TO ALWAYS BE RUNNING
-
-
 var hearts = 3
 var score = Global.save_files_slots[Global.active_save_file_index].get_value("Player", "coins")
 var lives = Global.save_files_slots[Global.active_save_file_index].get_value("Player", "lives")
 ### Use below two lines to launch scene directly
 #var score = 0
-#var lives = 0
+#var lives = 1
 ###
 var can_be_hurt = true# This variable is for temporary invulnerability after getting hit
 
 @onready var player: CharacterBody2D = $"../Player"
 @onready var pause_menu = player.get_node("UI/pause_menu")
-@onready var player_spawn: Marker2D = $"../Spawn_locations/Initial_spawn"# Original initial_spawn location (x,y) = (126.991, -37.986)
+@onready var player_spawn: Marker2D = $"../Spawn_locations/Initial_spawn"# Original initial_spawn location (x,y) = (-127.357, 5.985)
 @onready var bosses: Node2D = $"../Enemies/Bosses"
 
 #These variables are for handling pause menu
@@ -23,8 +20,8 @@ var selected_menu_index = 0
 var movement_is_blocked = false
 
 func _ready():
+	player.get_node("Camera2D").limit_bottom = 120
 	get_tree().paused = false
-	player.get_node("Camera2D").limit_bottom = -5
 	hearts = 3
 	player.get_node("UI/Health/Hearts").get_child(0).visible = true
 	player.get_node("UI/Health/Hearts").get_child(2).visible = true
@@ -86,6 +83,8 @@ func _process(delta: float) -> void:
 	#Code below handles pause menu
 	#Game Manager node -> Inspector -> Process -> Mode = Always: This allows the node run while scene is paused
 	if Input.is_action_just_pressed("escape"):
+		if self.get_node("../BossSlimePurple") and self.get_node("../BossSlimePurple").has_node("QuizPopup") or self.get_node("../BossSlimeRed") and self.get_node("../BossSlimeRed").has_node("QuizPopup"):
+			return# This prevents from pressing escape during a quiz to exit it
 		if lives >= 0 and hearts > 0:
 			pause_menu.get_node("pause_title").text = "Game Paused"
 			if pause_menu.visible == true:# exiting pause menu
@@ -135,11 +134,17 @@ func player_death():
 		_ready()
 	else:
 		game_over()
+	if self.get_node("../BossSlimePurple") and self.get_node("../BossSlimePurple").has_node("QuizPopup"):
+		self.get_node("../BossSlimePurple")._quiz_triggered = false
+		self.get_node("../BossSlimePurple/QuizPopup").queue_free()
+	if self.get_node("../BossSlimeRed") and self.get_node("../BossSlimeRed").has_node("QuizPopup"):
+		self.get_node("../BossSlimeRed")._quiz_triggered = false
+		self.get_node("../BossSlimeRed/QuizPopup").queue_free()
 	Engine.time_scale = 1
-	if bosses.get_node("necromancer_boss"):#resets miniboss fight if still present
-		bosses.get_node("necromancer_boss").reset_boss()
-	if bosses.get_node("dragon_final_boss"):#resets dragon boss fight if still present
-		bosses.get_node("dragon_final_boss").reset_boss()
+	#if bosses.get_node("necromancer_boss"):#resets miniboss fight if still present
+	#	bosses.get_node("necromancer_boss").reset_boss()
+	#if bosses.get_node("dragon_final_boss"):#resets dragon boss fight if still present
+	#	bosses.get_node("dragon_final_boss").reset_boss()
 
 func game_over():# shows game over screen
 	get_tree().paused = true
@@ -150,11 +155,10 @@ func game_over():# shows game over screen
 	pause_menu.get_node("select_icon").global_position = selected_menu.global_position + Vector2(-40,0)
 	#get_tree().reload_current_scene()
 
-
+# This runs when the end of the level is reached
 func _on_level_end_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
-		print("game complete")
-		await get_tree().create_timer(5).timeout	
-		Global.is_game_complete = true
+		Global.save_file(2, lives, score)
+		#await get_tree().create_timer(3).timeout	
+		#get_tree().change_scene_to_file("res://scenes/Levels/carlos_level.tscn")
 		get_tree().change_scene_to_file("res://scenes/level_transition.tscn")
-	pass # Replace with function body.

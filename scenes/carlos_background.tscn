@@ -1,0 +1,226 @@
+[gd_scene format=3]
+
+[node name="Background" type="ParallaxBackground"]
+
+[node name="Sky" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0, 0)
+
+[node name="SkyRect" type="ColorRect" parent="Sky"]
+offset_left = -2000
+offset_top = -1000
+offset_right = 8000
+offset_bottom = 1000
+color = Color(0.55, 0.7, 0.85, 1)
+
+[node name="SkyGradient" type="ColorRect" parent="Sky"]
+offset_left = -2000
+offset_top = 20
+offset_right = 8000
+offset_bottom = 1000
+color = Color(0.75, 0.88, 0.95, 1)
+
+[node name="Mountains_Far" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.1, 0.1)
+
+[node name="Mountain1" type="Polygon2D" parent="Mountains_Far"]
+color = Color(0.65, 0.78, 0.88, 1)
+polygon = PackedVector2Array(-50, 675, -50, 115, 25, 35, 100, 115, 100, 675)
+
+[node name="Mountain1_Snow" type="Polygon2D" parent="Mountains_Far"]
+color = Color(0.9, 0.95, 1, 1)
+polygon = PackedVector2Array(25, 35, -5, 95, 55, 95)
+
+[node name="Mountain2" type="Polygon2D" parent="Mountains_Far"]
+color = Color(0.6, 0.73, 0.84, 1)
+polygon = PackedVector2Array(80, 675, 80, 115, 175, 20, 270, 115, 270, 675)
+
+[node name="Mountain2_Snow" type="Polygon2D" parent="Mountains_Far"]
+color = Color(0.9, 0.95, 1, 1)
+polygon = PackedVector2Array(175, 20, 128, 90, 222, 90)
+
+[node name="Mountain3" type="Polygon2D" parent="Mountains_Far"]
+color = Color(0.65, 0.78, 0.88, 1)
+polygon = PackedVector2Array(240, 675, 240, 115, 330, 40, 420, 115, 420, 675)
+
+[node name="Mountain3_Snow" type="Polygon2D" parent="Mountains_Far"]
+color = Color(0.9, 0.95, 1, 1)
+polygon = PackedVector2Array(330, 40, 285, 95, 375, 95)
+
+[node name="Mountain4" type="Polygon2D" parent="Mountains_Far"]
+color = Color(0.6, 0.73, 0.84, 1)
+polygon = PackedVector2Array(390, 675, 390, 115, 490, 25, 590, 115, 590, 675)
+
+[node name="Mountain4_Snow" type="Polygon2D" parent="Mountains_Far"]
+color = Color(0.9, 0.95, 1, 1)
+polygon = PackedVector2Array(490, 25, 440, 90, 540, 90)
+
+[node name="Mountain5" type="Polygon2D" parent="Mountains_Far"]
+color = Color(0.65, 0.78, 0.88, 1)
+polygon = PackedVector2Array(560, 675, 560, 115, 650, 35, 740, 115, 740, 675)
+
+[node name="Mountain5_Snow" type="Polygon2D" parent="Mountains_Far"]
+color = Color(0.9, 0.95, 1, 1)
+polygon = PackedVector2Array(650, 35, 605, 93, 695, 93)
+
+[node name="Mountain6" type="Polygon2D" parent="Mountains_Far"]
+color = Color(0.6, 0.73, 0.84, 1)
+polygon = PackedVector2Array(710, 675, 710, 115, 820, 15, 930, 115, 930, 675)
+
+[node name="Mountain6_Snow" type="Polygon2D" parent="Mountains_Far"]
+color = Color(0.9, 0.95, 1, 1)
+polygon = PackedVector2Array(820, 15, 762, 90, 878, 90)
+
+[node name="Mountain7" type="Polygon2D" parent="Mountains_Far"]
+color = Color(0.65, 0.78, 0.88, 1)
+polygon = PackedVector2Array(900, 675, 900, 115, 990, 40, 1080, 115, 1080, 675)
+
+[node name="Mountain7_Snow" type="Polygon2D" parent="Mountains_Far"]
+color = Color(0.9, 0.95, 1, 1)
+polygon = PackedVector2Array(990, 40, 945, 95, 1035, 95)
+
+[node name="Mountains_Near" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.2, 0.15)
+
+[node name="Mountain1" type="Polygon2D" parent="Mountains_Near"]
+color = Color(0.45, 0.58, 0.72, 1)
+polygon = PackedVector2Array(-80, 660, -80, 115, 15, 60, 110, 115, 110, 660)
+
+[node name="Mountain1_Snow" type="Polygon2D" parent="Mountains_Near"]
+color = Color(0.85, 0.92, 0.98, 1)
+polygon = PackedVector2Array(15, 60, -25, 95, 55, 95)
+
+[node name="Mountain2" type="Polygon2D" parent="Mountains_Near"]
+color = Color(0.38, 0.52, 0.66, 1)
+polygon = PackedVector2Array(80, 660, 80, 115, 185, 45, 290, 115, 290, 660)
+
+[node name="Mountain2_Snow" type="Polygon2D" parent="Mountains_Near"]
+color = Color(0.85, 0.92, 0.98, 1)
+polygon = PackedVector2Array(185, 45, 135, 90, 235, 90)
+
+[node name="Mountain3" type="Polygon2D" parent="Mountains_Near"]
+color = Color(0.45, 0.58, 0.72, 1)
+polygon = PackedVector2Array(260, 660, 260, 115, 355, 65, 450, 115, 450, 660)
+
+[node name="Mountain3_Snow" type="Polygon2D" parent="Mountains_Near"]
+color = Color(0.85, 0.92, 0.98, 1)
+polygon = PackedVector2Array(355, 65, 310, 98, 400, 98)
+
+[node name="Mountain4" type="Polygon2D" parent="Mountains_Near"]
+color = Color(0.38, 0.52, 0.66, 1)
+polygon = PackedVector2Array(420, 660, 420, 115, 525, 50, 630, 115, 630, 660)
+
+[node name="Mountain4_Snow" type="Polygon2D" parent="Mountains_Near"]
+color = Color(0.85, 0.92, 0.98, 1)
+polygon = PackedVector2Array(525, 50, 475, 92, 575, 92)
+
+[node name="Mountain5" type="Polygon2D" parent="Mountains_Near"]
+color = Color(0.45, 0.58, 0.72, 1)
+polygon = PackedVector2Array(600, 660, 600, 115, 695, 60, 790, 115, 790, 660)
+
+[node name="Mountain5_Snow" type="Polygon2D" parent="Mountains_Near"]
+color = Color(0.85, 0.92, 0.98, 1)
+polygon = PackedVector2Array(695, 60, 650, 95, 740, 95)
+
+[node name="Mountain6" type="Polygon2D" parent="Mountains_Near"]
+color = Color(0.38, 0.52, 0.66, 1)
+polygon = PackedVector2Array(760, 660, 760, 115, 860, 45, 960, 115, 960, 660)
+
+[node name="Mountain6_Snow" type="Polygon2D" parent="Mountains_Near"]
+color = Color(0.85, 0.92, 0.98, 1)
+polygon = PackedVector2Array(860, 45, 810, 90, 910, 90)
+
+[node name="Clouds" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.05, 0)
+
+[node name="Cloud1" type="Polygon2D" parent="Clouds"]
+position = Vector2(50, -30)
+color = Color(1, 1, 1, 0.8)
+polygon = PackedVector2Array(-15, 0, -12, -6, -5, -9, 3, -10, 10, -9, 15, -5, 18, 0, -15, 0)
+
+[node name="Cloud1b" type="Polygon2D" parent="Clouds"]
+position = Vector2(50, -30)
+color = Color(1, 1, 1, 0.8)
+polygon = PackedVector2Array(-2, -4, 0, -14, 8, -16, 15, -14, 18, -8, 12, -5)
+
+[node name="Cloud2" type="Polygon2D" parent="Clouds"]
+position = Vector2(200, -50)
+color = Color(1, 1, 1, 0.75)
+polygon = PackedVector2Array(-20, 0, -17, -8, -8, -11, 3, -12, 12, -11, 20, -6, 22, 0, -20, 0)
+
+[node name="Cloud2b" type="Polygon2D" parent="Clouds"]
+position = Vector2(200, -50)
+color = Color(1, 1, 1, 0.75)
+polygon = PackedVector2Array(-5, -5, -2, -15, 5, -18, 12, -15, 15, -9, 10, -6)
+
+[node name="Cloud3" type="Polygon2D" parent="Clouds"]
+position = Vector2(400, -20)
+color = Color(1, 1, 1, 0.8)
+polygon = PackedVector2Array(-18, 0, -15, -5, -8, -8, 0, -9, 8, -8, 15, -4, 18, 0, -18, 0)
+
+[node name="Cloud3b" type="Polygon2D" parent="Clouds"]
+position = Vector2(400, -20)
+color = Color(1, 1, 1, 0.8)
+polygon = PackedVector2Array(-4, -3, -2, -12, 6, -14, 11, -11, 12, -6, 8, -4)
+
+[node name="Cloud4" type="Polygon2D" parent="Clouds"]
+position = Vector2(600, -45)
+color = Color(1, 1, 1, 0.75)
+polygon = PackedVector2Array(-15, 0, -12, -6, -5, -9, 3, -10, 10, -9, 15, -5, 18, 0, -15, 0)
+
+[node name="Cloud4b" type="Polygon2D" parent="Clouds"]
+position = Vector2(600, -45)
+color = Color(1, 1, 1, 0.75)
+polygon = PackedVector2Array(-2, -4, 0, -14, 8, -16, 15, -14, 18, -8, 12, -5)
+
+[node name="Cloud5" type="Polygon2D" parent="Clouds"]
+position = Vector2(850, -25)
+color = Color(1, 1, 1, 0.8)
+polygon = PackedVector2Array(-22, 0, -20, -7, -10, -10, 0, -11, 10, -10, 20, -5, 22, 0, -22, 0)
+
+[node name="Cloud5b" type="Polygon2D" parent="Clouds"]
+position = Vector2(850, -25)
+color = Color(1, 1, 1, 0.8)
+polygon = PackedVector2Array(-6, -4, -3, -15, 4, -17, 12, -14, 14, -8, 9, -5)
+
+[node name="Snow" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0, 0)
+
+[node name="SnowParticles" type="CPUParticles2D" parent="Snow"]
+position = Vector2(2750, -40)
+amount = 900
+lifetime = 14.0
+preprocess = 8.0
+randomness = 0.6
+lifetime_randomness = 0.4
+emission_shape = 3
+emission_rect_extents = Vector2(3000, 10)
+direction = Vector2(0, 1)
+spread = 20.0
+gravity = Vector2(0, 35)
+initial_velocity_min = 18.0
+initial_velocity_max = 45.0
+angular_velocity_min = -30.0
+angular_velocity_max = 30.0
+scale_amount_min = 5.0
+scale_amount_max = 9.0
+color = Color(1, 1, 1, 0.9)
+
+[node name="SnowParticlesFar" type="CPUParticles2D" parent="Snow"]
+position = Vector2(2750, -40)
+amount = 550
+lifetime = 18.0
+preprocess = 10.0
+randomness = 0.7
+lifetime_randomness = 0.5
+emission_shape = 3
+emission_rect_extents = Vector2(3000, 10)
+direction = Vector2(0, 1)
+spread = 10.0
+gravity = Vector2(0, 18)
+initial_velocity_min = 8.0
+initial_velocity_max = 20.0
+angular_velocity_min = -15.0
+angular_velocity_max = 15.0
+scale_amount_min = 3.0
+scale_amount_max = 5.5
+color = Color(1, 1, 1, 0.6)

@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://056seks1j3ts" path="res://assets/sprites/slime_green.png" id="1_lh1w4"]
 [ext_resource type="Script" uid="uid://c6qmeuistwc7a" path="res://scripts/slime_green.gd" id="1_qw3lm"]
-[ext_resource type="PackedScene" uid="uid://dgjb0g2vlxfry" path="res://scenes/kill_zone.tscn" id="2_qw3lm"]
+[ext_resource type="PackedScene" uid="uid://cjxbpfwu0kdky" path="res://scenes/harm_zone.tscn" id="3_qw3lm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aelh5"]
 atlas = ExtResource("1_lh1w4")
@@ -60,8 +60,8 @@ target_position = Vector2(9, 0)
 position = Vector2(0, 5)
 target_position = Vector2(-8, 0)
 
-[node name="Kill Zone" parent="AnimatedSprite2D" instance=ExtResource("2_qw3lm")]
+[node name="Harm Zone" parent="AnimatedSprite2D" instance=ExtResource("3_qw3lm")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Kill Zone"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Harm Zone"]
 position = Vector2(0, 4.5)
 shape = SubResource("RectangleShape2D_05wi8")

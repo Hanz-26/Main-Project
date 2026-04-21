@@ -1,0 +1,94 @@
+[gd_scene load_steps=13 format=3 uid="uid://bpurplslim001"]
+
+[ext_resource type="Script" uid="uid://dbossslimgd1a" path="res://scripts/dionny_boss_slime.gd" id="1_bsp"]
+[ext_resource type="Texture2D" uid="uid://dfl3vtgqpom2u" path="res://assets/sprites/slime_purple.png" id="2_bsp"]
+[ext_resource type="PackedScene" uid="uid://cjxbpfwu0kdky" path="res://scenes/harm_zone.tscn" id="3_hrt7t"]
+[ext_resource type="AudioStream" uid="uid://btite80s4125o" path="res://assets/sounds/explosion.wav" id="4_bsp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bp01"]
+atlas = ExtResource("2_bsp")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bp02"]
+atlas = ExtResource("2_bsp")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bp03"]
+atlas = ExtResource("2_bsp")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bp04"]
+atlas = ExtResource("2_bsp")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bp01"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bp01")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bp02")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bp03")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bp04")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bp01"]
+size = Vector2(34.396866, 29.929737)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bp_enc"]
+size = Vector2(220, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bp_stomp"]
+size = Vector2(38, 6)
+
+[node name="BossSlimePurple" type="Node2D"]
+script = ExtResource("1_bsp")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_bp01")
+autoplay = "default"
+
+[node name="Harm Zone" parent="AnimatedSprite2D" instance=ExtResource("3_hrt7t")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Harm Zone"]
+position = Vector2(0.09813671, 5.958547)
+scale = Vector2(0.39999983, 0.39999983)
+shape = SubResource("RectangleShape2D_bp01")
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+position = Vector2(0, 4)
+target_position = Vector2(35, 0)
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+position = Vector2(0, 4)
+target_position = Vector2(-35, 0)
+
+[node name="EncounterZone" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EncounterZone"]
+shape = SubResource("RectangleShape2D_bp_enc")
+
+[node name="HurtSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_bsp")
+bus = &"SFX"
+
+[node name="StompHitbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StompHitbox"]
+position = Vector2(0, -6)
+shape = SubResource("RectangleShape2D_bp_stomp")
+
+[connection signal="body_entered" from="EncounterZone" to="." method="_on_encounter_zone_body_entered"]
