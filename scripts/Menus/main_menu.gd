@@ -167,7 +167,7 @@ func _process(delta: float) -> void:
 		await get_tree().create_timer(0.35).timeout	
 		movement_is_blocked = false
 
-	if Input.is_action_just_pressed("confirm"):
+	if Input.is_action_just_pressed("confirm") and not movement_is_blocked:
 		if current_menu.name == "submenu_start":#start menu
 			if selected_menu.name == "submenu_start_back":# Back to main menu
 				self._ready()
@@ -193,7 +193,8 @@ func _process(delta: float) -> void:
 			elif selected_menu.name == "submenu_start_back":# reset start menu
 				select_submenu_start()
 			elif str(selected_menu.name)[-1] == selected_save_file:# attempt to overwrite same file
-				print("ERROR: Can't overwrite same save file")# FIXME Add error sound effect
+				print("ERROR: Can't overwrite same save file")
+				self.get_node("error_sound").play()
 			elif str(selected_menu.name)[-1] != selected_save_file:# file copy confirmation
 				current_menu.get_node("copy_prompt").text = "Copy save " + str(int(selected_save_file) + 1) + " to " + str(int(selected_menu_index) + 1) + "?"
 				current_menu.get_node("copy_confirmation").visible = true
