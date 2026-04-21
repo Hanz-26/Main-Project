@@ -265,7 +265,6 @@ func select_file(save_file):# This is called when pressing Enter on a save file
 		#get_tree().change_scene_to_file("res://scenes/castle_level.tscn")
 	else:
 		current_menu = current_menu.get_node("file_selection_options")
-
 		current_menu.visible = true
 		selected_menu_index = 0
 		selected_menu = current_menu.get_child(0)
