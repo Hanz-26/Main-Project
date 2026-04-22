@@ -268,6 +268,7 @@ func _on_phase_3_child_exiting_tree(node: Node) -> void:
 
 func reset_boss():
 	if door_is_closed:
+		self.get_node("AnimatedSprite2D").play("idle")
 		final_boss_lives = 7 - wave_index
 		door_is_closed = false
 		self.get_node("Timer").stop()

@@ -22,9 +22,6 @@ var selected_menu
 var selected_menu_index = 0
 var movement_is_blocked = false
 
-
-
-
 func _ready():
 	get_tree().paused = false
 	player.get_node("Camera2D").limit_bottom = 900
@@ -37,7 +34,7 @@ func _ready():
 	player.get_node("UI/Health/Hearts").get_child(5).visible = false
 	player.get_node("UI/Health/Lives/Lives_count").text = ("x" + str(lives))
 	player.get_node("UI/Coins/Coins_counter").text = "x" + str(score)
-	#player.global_position = player_spawn.global_position# turn this off to freely mover player around; check for errors harm_zone.gd
+	player.global_position = player_spawn.global_position# turn this off to freely mover player around; check for errors harm_zone.gd
 	player.get_node("Camera2D").enabled = true
 	player.get_node("Boss_Camera2D").enabled = false
 

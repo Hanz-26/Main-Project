@@ -1,24 +1,3 @@
-'extends Node
-
-var hearts = 3
-var score = 0
-var lives = 3
-
-func _init():
-	if Global.active_save_file_index != null and Global.save_files_slots[Global.active_save_file_index] != null:
-		score = Global.save_files_slots[Global.active_save_file_index].get_value("Player", "coins")
-		lives = Global.save_files_slots[Global.active_save_file_index].get_value("Player", "lives")
-
-@onready var player: CharacterBody2D = $"../Player"
-@onready var pause_menu = player.get_node("UI/pause_menu")
-@onready var player_spawn: Marker2D = $"../Spawn_locations/Initial_spawn"# Original initial_spawn location (x,y) = (55.0, 69.0)
-@onready var bosses: Node2D = $"../Enemies/Bosses"
-
-#These two variables are for handling pause menu
-var selected_menu
-var selected_menu_index = 0
-var movement_is_blocked = false'
-
 extends Node
 
 #THIS NODE MUST BE SET TO ALWAYS BE RUNNING
@@ -43,9 +22,6 @@ var selected_menu
 var selected_menu_index = 0
 var movement_is_blocked = false
 
-
-
-
 func _ready():
 	get_tree().paused = false
 	player.get_node("Camera2D").limit_bottom = 125
@@ -58,7 +34,7 @@ func _ready():
 	player.get_node("UI/Health/Hearts").get_child(5).visible = false
 	player.get_node("UI/Health/Lives/Lives_count").text = ("x" + str(lives))
 	player.get_node("UI/Coins/Coins_counter").text = "x" + str(score)
-	#player.global_position = player_spawn.global_position# turn this off to freely mover player around; check for errors harm_zone.gd
+	player.global_position = player_spawn.global_position# turn this off to freely mover player around; check for errors harm_zone.gd
 	player.get_node("Camera2D").enabled = true
 	player.get_node("Boss_Camera2D").enabled = false
 
