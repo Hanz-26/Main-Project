@@ -1,0 +1,60 @@
+[gd_scene load_steps=10 format=3 uid="uid://bqboss_quiz001"]
+
+[ext_resource type="Texture2D" path="res://Assets/sprites/Enemies/necromancer_.png" id="1_tex"]
+[ext_resource type="Script" path="res://Scripts/quiz_boss.gd" id="2_script"]
+[ext_resource type="PackedScene" path="res://Scenes/harm_zone.tscn" id="3_harm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qb0"]
+atlas = ExtResource("1_tex")
+region = Rect2(168, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qb1"]
+atlas = ExtResource("1_tex")
+region = Rect2(144, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qb2"]
+atlas = ExtResource("1_tex")
+region = Rect2(120, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qb3"]
+atlas = ExtResource("1_tex")
+region = Rect2(96, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qb0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qb1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qb2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qb3")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qb"]
+size = Vector2(20, 30)
+
+[node name="quiz_boss" type="Node2D"]
+script = ExtResource("2_script")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -20)
+scale = Vector2(1.8, 1.8)
+sprite_frames = SubResource("SpriteFrames_qb")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="Harm Zone" parent="AnimatedSprite2D" instance=ExtResource("3_harm")]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Harm Zone"]
+shape = SubResource("RectangleShape2D_qb")

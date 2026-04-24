@@ -1,0 +1,62 @@
+[gd_scene load_steps=10 format=3]
+
+[ext_resource type="Texture2D" path="res://Assets/sprites/Enemies/necromancer_.png" id="1_4qyvd"]
+[ext_resource type="Script" path="res://Scripts/necromancer_mini_boss.gd" id="1_rf5tu"]
+[ext_resource type="PackedScene" path="res://Scenes/harm_zone.tscn" id="2_lhxem"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lhxem"]
+atlas = ExtResource("1_4qyvd")
+region = Rect2(168, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s7x4t"]
+atlas = ExtResource("1_4qyvd")
+region = Rect2(144, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tddj3"]
+atlas = ExtResource("1_4qyvd")
+region = Rect2(120, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q363c"]
+atlas = ExtResource("1_4qyvd")
+region = Rect2(96, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yuri1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lhxem")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s7x4t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tddj3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q363c")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ww5mx"]
+size = Vector2(10.144928, 15.556976)
+
+[node name="necromancer_boss" type="Node2D"]
+script = ExtResource("1_rf5tu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(30.147533, -35.543285)
+scale = Vector2(2.9877055, 2.9877055)
+sprite_frames = SubResource("SpriteFrames_yuri1")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.85921514
+
+[node name="Harm Zone" parent="AnimatedSprite2D" instance=ExtResource("2_lhxem")]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Harm Zone"]
+position = Vector2(0.17580462, 3.956974)
+shape = SubResource("RectangleShape2D_ww5mx")

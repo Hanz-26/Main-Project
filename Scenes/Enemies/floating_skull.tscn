@@ -1,0 +1,102 @@
+[gd_scene load_steps=12 format=3]
+
+[ext_resource type="Texture2D" path="res://Assets/sprites/Effects/Water Effect and Bullet 16x16.png" id="1_0u3gi"]
+[ext_resource type="Script" path="res://Scripts/Enemies/floating_skull.gd" id="1_n6jgc"]
+[ext_resource type="Texture2D" path="res://Assets/sprites/Enemies/skeleton_.png" id="2_lbvnl"]
+[ext_resource type="PackedScene" path="res://Scenes/harm_zone.tscn" id="3_n6jgc"]
+[ext_resource type="FontFile" path="res://Assets/fonts/PixelOperator8.ttf" id="4_lbvnl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_snpmq"]
+atlas = ExtResource("1_0u3gi")
+region = Rect2(224, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h21j3"]
+atlas = ExtResource("1_0u3gi")
+region = Rect2(240, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k6al8"]
+atlas = ExtResource("1_0u3gi")
+region = Rect2(256, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_60gcc"]
+atlas = ExtResource("1_0u3gi")
+region = Rect2(272, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vows0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_snpmq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h21j3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k6al8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_60gcc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7oumx"]
+radius = 5.382008
+
+[node name="floating_skull" type="Node2D"]
+script = ExtResource("1_n6jgc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(13.284806, -20.645882)
+scale = Vector2(1.8434907, 1.8434907)
+sprite_frames = SubResource("SpriteFrames_vows0")
+autoplay = "default"
+frame_progress = 0.2641578
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatedSprite2D"]
+position = Vector2(0.13114214, 3.7812357)
+scale = Vector2(0.54244906, 0.54244906)
+texture = ExtResource("2_lbvnl")
+region_enabled = true
+region_rect = Rect2(0, 8, 24, 24)
+
+[node name="ray_casts" type="Node2D" parent="AnimatedSprite2D"]
+position = Vector2(0.39982617, 3.1319702)
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="RayCast2D_up" type="RayCast2D" parent="AnimatedSprite2D/ray_casts"]
+scale = Vector2(1.0000002, 1.0000002)
+enabled = false
+target_position = Vector2(0, -6)
+
+[node name="RayCast2D_right" type="RayCast2D" parent="AnimatedSprite2D/ray_casts"]
+scale = Vector2(1.0000002, 1.0000002)
+enabled = false
+target_position = Vector2(6, 0)
+
+[node name="RayCast2D_down" type="RayCast2D" parent="AnimatedSprite2D/ray_casts"]
+scale = Vector2(1.0000001, 1.0000001)
+enabled = false
+target_position = Vector2(0, 6)
+
+[node name="RayCast2D_left" type="RayCast2D" parent="AnimatedSprite2D/ray_casts"]
+scale = Vector2(1.0000001, 1.0000001)
+enabled = false
+target_position = Vector2(-6, 0)
+
+[node name="Harm Zone" parent="AnimatedSprite2D" instance=ExtResource("3_n6jgc")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Harm Zone"]
+position = Vector2(0.32626396, 2.903748)
+shape = SubResource("CircleShape2D_7oumx")
+
+[node name="Label" type="Label" parent="AnimatedSprite2D"]
+offset_left = -8.177092
+offset_top = -13.963761
+offset_right = 8.124933
+offset_bottom = -5.9637613
+theme_override_fonts/font = ExtResource("4_lbvnl")
+theme_override_font_sizes/font_size = 8
+horizontal_alignment = 1
